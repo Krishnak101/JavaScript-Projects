@@ -1,0 +1,6 @@
+.main_app {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px 8%;
+}
