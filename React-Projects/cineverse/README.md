@@ -59,11 +59,11 @@ This project was built to strengthen understanding of:
 
 3. **Create an Environment File**
 
-To use your TMDB API, create a .env file in the project root (same level as vite.config.js) and add your own API key like this:
+   To use your TMDB API, create a .env file in the project root (same level as vite.config.js) and add your own API key like this:
 
-```bash
-VITE_API_KEY=your_tmdb_api_key_here
-```
+   ```bash
+   VITE_API_KEY=your_tmdb_api_key_here
+   ```
 
 4. **Start the developement server**
 
