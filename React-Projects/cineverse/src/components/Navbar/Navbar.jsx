@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <h1>CineVerse</h1>
+      <h1 className="text-3xl font-bold">CineVerse</h1>
       <div className="navbar_links">
         {/* <DarkMode /> */}
         <NavLink to="/">
