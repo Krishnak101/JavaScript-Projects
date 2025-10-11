@@ -57,13 +57,21 @@ This project was built to strengthen understanding of:
    npm install
    ```
 
-3. **Start the developement server**
+3. **Create an Environment File**
+
+To use your TMDB API, create a .env file in the project root (same level as vite.config.js) and add your own API key like this:
+
+```bash
+VITE_API_KEY=your_tmdb_api_key_here
+```
+
+4. **Start the developement server**
 
    ```bash
    npm run dev
    ```
 
-4. **Open your browser and visit:**
+5. **Open your browser and visit:**
    ```arduino
    http://localhost:5173
    ```
