@@ -72,7 +72,5 @@ This project was built to strengthen understanding of:
 
 ## 🤝 Acknowledgments
 
-This project was built to strengthen understanding of:
-
 - API Source: [TMDB API](https://www.themoviedb.org/documentation/api)
 - Deployed using [Netlify](https://www.netlify.com/)
