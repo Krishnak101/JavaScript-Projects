@@ -4,6 +4,7 @@ import _ from "lodash";
 import "./MovieList.css";
 import MovieCard from "./MovieCard";
 import FilterGroup from "./FilterGroup";
+const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
 const MovieList = ({ type, title, emoji }) => {
   const [data, setData] = useState([]);
@@ -26,8 +27,6 @@ const MovieList = ({ type, title, emoji }) => {
     }
   }, [sort]);
   const handleFilter = ({ rating }) => {
-    console.log("Rating is :", rating, minRating);
-    console.log("data start  is :", data);
     if (minRating === rating) {
       setFilteredData(data);
       setMinRating(0);
@@ -45,7 +44,7 @@ const MovieList = ({ type, title, emoji }) => {
 
   const moviesAPI = async () => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${type}?api_key=e83477598b9728c35ee3c492afa6ea74`
+      `https://api.themoviedb.org/3/movie/${type}?api_key=${api_key}`
     );
     const movies = await response.json();
     setData(movies.results);
