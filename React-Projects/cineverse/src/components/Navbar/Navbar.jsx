@@ -12,7 +12,7 @@ const Navbar = () => {
       <h1 className="text-3xl font-bold">CineVerse</h1>
       <div className="navbar_links">
         {/* <DarkMode /> */}
-        <NavLink to="/">
+        <NavLink to="/popular">
           Popular <img src={Fire} alt="fire emoji" className="navbar_emoji" />
         </NavLink>
         <NavLink to="/top_rated">

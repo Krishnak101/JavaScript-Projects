@@ -7,14 +7,17 @@ import MovieList from "./components/MovieList/MovieList";
 import Fire from "./assets/fire.png";
 import Star from "./assets/glowing-star.png";
 import Party from "./assets/partying-face.png";
+import Login from "./components/Login/login";
 const App = () => {
   return (
     <div className="app">
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       <main>
         <Routes>
+          <Route path="/" element={<Login></Login>} />
+
           <Route
-            path="/"
+            path="/popular"
             element={
               <MovieList
                 type="popular"
@@ -23,6 +26,7 @@ const App = () => {
               ></MovieList>
             }
           />
+
           <Route
             path="/top_rated"
             element={
@@ -33,6 +37,7 @@ const App = () => {
               ></MovieList>
             }
           />
+
           <Route
             path="/upcoming"
             element={

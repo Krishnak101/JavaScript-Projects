@@ -1,7 +1,81 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import "./login.css";
+import Cineverse from "../../assets/CineVerse_logo.png";
+import { checkValidData } from "./validate";
 
 const Login = () => {
-  return <div>L</div>;
+  const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const email = useRef(null);
+  const password = useRef(null);
+
+  const toggleForm = () => {
+    setIsSignInForm(!isSignInForm);
+  };
+
+  const validateForm = () => {
+    // form validation logic here
+    const message = checkValidData(email.current.value, password.current.value);
+    setErrorMessage(message);
+  };
+
+  return (
+    <div className="header_class ">
+      <div className="absolute z-6 logo_class bg-gradient-to-b from-black">
+        <img className="w-44 " src={Cineverse} alt="Cineverse Logo" />
+      </div>
+      <div className="absolute">
+        <img
+          src="https://assets.nflxext.com/ffe/siteui/vlv3/25f808aa-cecb-4753-8541-9a79f40c18ae/web/CA-en-20251006-TRIFECTA-perspective_6136ff47-a51d-4468-83da-8477312ee5fa_large.jpg"
+          alt="Background Image"
+          className="w-full"
+        />
+      </div>
+      <div className="login_container z-5 absolute bg-black   w-1/4 top-1/5 left-1/3">
+        <form onSubmit={(e) => e.preventDefault()} className="login_form ">
+          <h1 className="text-4xl font-bold ">
+            {isSignInForm ? "Sign In" : "Sign Up"}
+          </h1>
+          {!isSignInForm && (
+            <input
+              type="text"
+              placeholder="Full Name"
+              className="username_input  bg-gray-600"
+            />
+          )}
+          <input
+            type="email"
+            ref={email}
+            placeholder="Email or phone number"
+            className="email_input bg-gray-600"
+          />
+          <br />
+          <input
+            type="password"
+            ref={password}
+            placeholder="Password"
+            className="password_input bg-gray-600"
+          />
+          <br />
+          <p className="font-bold text-red-500 ">{errorMessage}</p>
+          <button
+            className="login_button font-bold"
+            onClick={() => {
+              validateForm();
+            }}
+          >
+            {isSignInForm ? "Sign In" : "Sign Up"}
+          </button>
+          <p className="login_new">
+            {isSignInForm ? "New to Cineverse?" : "Already have an account?"}{" "}
+            <a href="#" className="login_signup font-bold" onClick={toggleForm}>
+              {!isSignInForm ? "Sign in now" : "Sign up now"}
+            </a>
+          </p>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default Login;
