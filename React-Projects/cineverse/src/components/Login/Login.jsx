@@ -2,10 +2,17 @@ import React, { useRef, useState } from "react";
 import "./login.css";
 import Cineverse from "../../assets/CineVerse_logo.png";
 import { checkValidData } from "./validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { set } from "lodash";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const fullname = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -17,12 +24,46 @@ const Login = () => {
     // form validation logic here
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
+    if (message) return;
+
+    if (isSignInForm) {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
+    } else {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
+    }
   };
 
   return (
     <div className="header_class ">
-      <div className="absolute z-6 logo_class bg-gradient-to-b from-black">
-        <img className="w-44 " src={Cineverse} alt="Cineverse Logo" />
+      <div className="logo_class absolute z-6  bg-gradient-to-b from-black">
+        <img className="w-44" src={Cineverse} alt="Cineverse Logo" />
       </div>
       <div className="absolute">
         <img
@@ -39,6 +80,7 @@ const Login = () => {
           {!isSignInForm && (
             <input
               type="text"
+              ref={fullname}
               placeholder="Full Name"
               className="username_input  bg-gray-600"
             />
