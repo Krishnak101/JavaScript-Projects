@@ -1,13 +1,12 @@
 import React, { useRef, useState } from "react";
 import "./login.css";
-import Cineverse from "../../assets/CineVerse_logo.png";
 import { checkValidData } from "./validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { set } from "lodash";
+import Logo from "../Navbar/Logo";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -62,9 +61,7 @@ const Login = () => {
 
   return (
     <div className="header_class ">
-      <div className="logo_class absolute z-6  bg-gradient-to-b from-black">
-        <img className="w-44" src={Cineverse} alt="Cineverse Logo" />
-      </div>
+      <Logo />
       <div className="absolute">
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/25f808aa-cecb-4753-8541-9a79f40c18ae/web/CA-en-20251006-TRIFECTA-perspective_6136ff47-a51d-4468-83da-8477312ee5fa_large.jpg"
