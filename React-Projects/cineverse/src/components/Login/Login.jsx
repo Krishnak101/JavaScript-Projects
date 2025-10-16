@@ -61,7 +61,6 @@ const Login = () => {
             .then(() => {
               const { uid, email, displayName } = auth.currentUser;
               dispatch(setUserState({ uid, email, displayName }));
-              navigate("/home");
             })
             .catch((error) => {
               console.error(error.message);

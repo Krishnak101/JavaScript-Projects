@@ -1,10 +1,8 @@
-import React, { use, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { Provider, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
-import MovieList from "./components/MovieList/MovieList";
 
 import Login from "./components/Login/login";
 import appStore from "./components/utils/appStore";
@@ -18,7 +16,7 @@ const App = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unSubscribe = onAuthStateChanged(auth, (user) => {
       console.log("Auth state changed:", user);
       if (user) {
         // User is signed in
@@ -31,6 +29,9 @@ const App = () => {
         navigate("/");
       }
     });
+
+    // unSubscribe from onAuthStateChanged event listener on unmount
+    return () => unSubscribe();
   }, []);
   return (
     <div className="app">
