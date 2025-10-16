@@ -4,9 +4,13 @@ import { checkValidData } from "./validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import Logo from "../Navbar/Logo";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setUserState } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -14,6 +18,8 @@ const Login = () => {
   const fullname = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const toggleForm = () => {
     setIsSignInForm(!isSignInForm);
@@ -34,7 +40,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -50,6 +55,17 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          updateProfile(user, {
+            displayName: fullname.current.value,
+          })
+            .then(() => {
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(setUserState({ uid, email, displayName }));
+              navigate("/home");
+            })
+            .catch((error) => {
+              console.error(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
