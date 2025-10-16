@@ -1,4 +1,5 @@
 import React from "react";
+import "./MovieList.css";
 
 const FilterGroup = ({ minRating, onRatingClick, ratings }) => {
   return (
@@ -6,7 +7,7 @@ const FilterGroup = ({ minRating, onRatingClick, ratings }) => {
       {ratings.map((rating) => (
         <li
           className={
-            minRating == { rating }
+            minRating === rating
               ? "movie_filter_item active"
               : "movie_filter_item"
           }
