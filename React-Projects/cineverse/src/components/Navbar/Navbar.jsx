@@ -7,10 +7,15 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
+import { toggleGptState } from "../utils/redux/gptSlice";
+import { useDispatch, useSelector } from "react-redux";
 // import DarkMode from "../DarkMode/DarkMode";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isGptOpen = useSelector((state) => state.gpt.isGptOpen);
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -21,6 +26,14 @@ const Navbar = () => {
         console.error("Error signing out:", error);
       });
   };
+
+  const handleGptSearch = () => {
+    dispatch(toggleGptState());
+    console.log("GPT state toggled. isGptOpen:", isGptOpen);
+
+    !isGptOpen ? navigate("/home/gpt_search") : navigate("/home/popular");
+  };
+
   return (
     <nav className="navbar">
       <div>
@@ -28,20 +41,32 @@ const Navbar = () => {
       </div>
 
       <div className="navbar_links ">
-        {/* <DarkMode /> */}
-        <NavLink className="navbar_link" to="/home/popular">
-          Popular <img src={Fire} alt="fire emoji" className="navbar_emoji" />
-        </NavLink>
-        <NavLink className="navbar_link" to="/home/top_rated">
-          Top Rated <img src={Star} alt="star emoji" className="navbar_emoji" />
-        </NavLink>
-        <NavLink className="navbar_link" to="/home/upcoming">
-          Upcoming{" "}
-          <img src={Party} alt="party emoji" className="navbar_emoji" />
-        </NavLink>
+        {!isGptOpen && (
+          <>
+            <NavLink className="navbar_link" to="/home/popular">
+              Popular{" "}
+              <img src={Fire} alt="fire emoji" className="navbar_emoji" />
+            </NavLink>
+            <NavLink className="navbar_link" to="/home/top_rated">
+              Top Rated{" "}
+              <img src={Star} alt="star emoji" className="navbar_emoji" />
+            </NavLink>
+            <NavLink className="navbar_link" to="/home/upcoming">
+              Upcoming{" "}
+              <img src={Party} alt="party emoji" className="navbar_emoji" />
+            </NavLink>
+          </>
+        )}
+        <button
+          className="gpt_container bg-green-600 hover:bg-green-700 transition"
+          onClick={handleGptSearch}
+        >
+          {" "}
+          GPT Search
+        </button>
         <button
           onClick={handleSignOut}
-          className="signout_btn bg-red-600 text-white font-bold rounded hover:bg-red-700 transition"
+          className="signout_btn bg-red-600 text-white font-bold hover:bg-red-700 transition"
         >
           Sign Out
         </button>

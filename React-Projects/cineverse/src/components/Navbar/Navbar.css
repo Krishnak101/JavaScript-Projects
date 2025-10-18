@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 30px;
-  border-bottom: 1px solid #e6e6e6;
+  /* border-bottom: 1px solid #e6e6e6; */
 }
 
 .navbar > h1 {
@@ -43,4 +43,16 @@
   padding: 8px 16px;
   font-size: 16px;
   cursor: pointer;
+  border-radius: 6px;
+}
+
+.gpt_container {
+  margin-left: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  /* background-color: #00ff00; */
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
 }

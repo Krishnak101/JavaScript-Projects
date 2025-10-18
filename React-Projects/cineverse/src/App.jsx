@@ -5,10 +5,13 @@ import { useDispatch } from "react-redux";
 import "./App.css";
 
 import Login from "./components/Login/login";
-import appStore from "./components/utils/appStore";
+import appStore from "./components/utils/redux/appStore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./components/utils/firebase";
-import { clearUserState, setUserState } from "./components/utils/userSlice";
+import {
+  clearUserState,
+  setUserState,
+} from "./components/utils/redux/userSlice";
 import Home from "./Home";
 
 const App = () => {

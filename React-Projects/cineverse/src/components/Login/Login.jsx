@@ -10,7 +10,7 @@ import { auth } from "../utils/firebase";
 import Logo from "../Navbar/Logo";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setUserState } from "../utils/userSlice";
+import { setUserState } from "../utils/redux/userSlice";
 import { BACKGROUND_IMAGE_URL } from "../utils/constants";
 
 const Login = () => {
@@ -82,7 +82,7 @@ const Login = () => {
         <img
           src={BACKGROUND_IMAGE_URL}
           alt="Background Image"
-          className="w-full"
+          className="w-full  opacity-70"
         />
       </div>
       <div className="login_container z-5 absolute bg-black   w-1/4 top-1/5 left-1/3">
@@ -134,4 +134,3 @@ const Login = () => {
 };
 
 export default Login;
- 

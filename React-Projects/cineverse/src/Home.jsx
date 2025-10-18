@@ -5,6 +5,7 @@ import MovieList from "./components/MovieList/MovieList";
 import Fire from "./assets/fire.png";
 import Star from "./assets/glowing-star.png";
 import Party from "./assets/partying-face.png";
+import GptSearch from "./components/GPT/GptSearchUI";
 
 const Home = () => {
   return (
@@ -22,6 +23,8 @@ const Home = () => {
               ></MovieList>
             }
           />
+
+          <Route path="gpt_search" element={<GptSearch></GptSearch>} />
           <Route
             path="popular"
             element={

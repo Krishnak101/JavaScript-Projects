@@ -4,7 +4,7 @@ import "../Login/login.css";
 
 const Logo = () => {
   return (
-    <div className="logo_class top-0 absolute z-6  bg-gradient-to-b from-black">
+    <div className="logo_class top-0 absolute left-0 z-6 opacity transparent">
       <img className="w-44" src={Cineverse} alt="Cineverse Logo" />
     </div>
   );
