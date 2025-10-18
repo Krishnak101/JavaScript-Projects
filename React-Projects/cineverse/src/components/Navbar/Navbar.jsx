@@ -9,6 +9,8 @@ import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
 import { toggleGptState } from "../utils/redux/gptSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { SUPPORTED_LANGUAGES } from "../utils/constants";
+import { setLanguage } from "../utils/redux/configSlice";
 // import DarkMode from "../DarkMode/DarkMode";
 
 const Navbar = () => {
@@ -29,9 +31,14 @@ const Navbar = () => {
 
   const handleGptSearch = () => {
     dispatch(toggleGptState());
-    console.log("GPT state toggled. isGptOpen:", isGptOpen);
 
     !isGptOpen ? navigate("/home/gpt_search") : navigate("/home/popular");
+  };
+
+  // Implementing language change logic here
+  const handleLanguageSelection = (event) => {
+    const selectedLanguage = event.target.value;
+    dispatch(setLanguage(selectedLanguage)); // Dispatch action to update language in Redux store
   };
 
   return (
@@ -57,12 +64,25 @@ const Navbar = () => {
             </NavLink>
           </>
         )}
+
+        {isGptOpen && (
+          <select
+            className="language_selector"
+            onChange={handleLanguageSelection}
+          >
+            {SUPPORTED_LANGUAGES.map((lang) => (
+              <option key={lang.code} value={lang.code}>
+                {lang.name}
+              </option>
+            ))}
+          </select>
+        )}
+
         <button
           className="gpt_container bg-green-600 hover:bg-green-700 transition"
           onClick={handleGptSearch}
         >
-          {" "}
-          GPT Search
+          {isGptOpen ? "Home Page" : "GPT Search"}
         </button>
         <button
           onClick={handleSignOut}

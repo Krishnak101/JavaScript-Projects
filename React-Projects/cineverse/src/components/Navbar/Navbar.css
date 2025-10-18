@@ -56,3 +56,15 @@
   border-radius: 6px;
   font-weight: 600;
 }
+
+.language_selector {
+  margin-left: 20px;
+  padding: 6px 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  background-color: #202020;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
