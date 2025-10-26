@@ -5,8 +5,7 @@ import MovieList from "../MovieList/MovieList";
 const GptRecommendation = () => {
   const { gptMovieNames, gptResults } = useSelector((state) => state.gpt);
   if (!gptResults || gptResults.length === 0) {
-    console.log("No GPT Movies Available");
-    return <div>No Recommendations Available</div>;
+    return null;
   }
 
   return (
