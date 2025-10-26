@@ -56,7 +56,7 @@ const MovieList = ({ type, title, emoji }) => {
       <header className="align_center movie_list_header">
         <h2 className="align_center movie_list_heading">
           {title}{" "}
-          <img src={emoji} alt={`${emoji} emoji`} className="navbar_emoji" />
+          {/* <img src={emoji} alt={`${emoji} emoji`} className="navbar_emoji" /> */}
         </h2>
         <div className="align_center movie_list_fs">
           <FilterGroup
