@@ -20,7 +20,6 @@ const App = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
-      console.log("Auth state changed:", user);
       if (user) {
         // User is signed in
         const { uid, email, displayName } = user;

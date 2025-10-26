@@ -63,7 +63,7 @@ const MovieList = ({ type, title, movieList }) => {
           {title}{" "}
           {/* <img src={emoji} alt={`${emoji} emoji`} className="navbar_emoji" /> */}
         </h2>
-        {!filteredData || filteredData.length == 0 ? null : (
+        {!data || data.length == 0 ? null : (
           <div className="align_center movie_list_fs">
             <FilterGroup
               minRating={minRating}

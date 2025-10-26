@@ -15,47 +15,23 @@ const Home = () => {
         <Routes>
           <Route
             index
-            element={
-              <MovieList
-                type="popular"
-                title="Popular"
-                emoji={Fire}
-              ></MovieList>
-            }
+            element={<MovieList type="popular" title="Popular"></MovieList>}
           />
 
           <Route path="gpt_search" element={<GptSearch></GptSearch>} />
           <Route
             path="popular"
-            element={
-              <MovieList
-                type="popular"
-                title="Popular"
-                emoji={Fire}
-              ></MovieList>
-            }
+            element={<MovieList type="popular" title="Popular"></MovieList>}
           />
 
           <Route
             path="top_rated"
-            element={
-              <MovieList
-                type="top_rated"
-                title="Top Rated"
-                emoji={Star}
-              ></MovieList>
-            }
+            element={<MovieList type="top_rated" title="Top Rated"></MovieList>}
           />
 
           <Route
             path="upcoming"
-            element={
-              <MovieList
-                type="upcoming"
-                title="Upcoming"
-                emoji={Party}
-              ></MovieList>
-            }
+            element={<MovieList type="upcoming" title="Upcoming"></MovieList>}
           />
         </Routes>
       </main>

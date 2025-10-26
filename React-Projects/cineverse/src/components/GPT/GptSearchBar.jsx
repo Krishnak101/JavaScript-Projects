@@ -32,7 +32,6 @@ const GptSearchBar = () => {
       "Act as a movie Recommendation System and suggest some movies for the query: " +
       searchText.current.value +
       ". Only give me the top 5 movie names in a comma separated list, like the example result: Movie1, Movie2, Movie3, Movie4, Movie5. Do not include any additional text. Incase of no results or content regulation issues, respond with 'No Results Found'";
-    console.log("GPT Search Query:", query);
     if (!query) return;
     try {
       // Example usage:
@@ -43,7 +42,6 @@ const GptSearchBar = () => {
         max_output_tokens: 10000,
       });
 
-      console.log(response1.output_text);
       const gptResult = response1.output_text.split(",");
 
       // searchMovieByTMDB returns a promise, so we need to handle it accordingly
@@ -52,10 +50,6 @@ const GptSearchBar = () => {
       );
       // Waiting for all TMDB search promises to resolve to get movie results
       const movieResults = await Promise.all(moviesPromise);
-      console.log(
-        "Movies fetched from TMDB based on GPT suggestions:",
-        movieResults
-      );
       // Flattening the array to get a single list of movies
       dispatch(
         addGPTMovies({ gptMovieNames: gptResult, gptResults: movieResults })
