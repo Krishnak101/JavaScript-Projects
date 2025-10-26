@@ -6,7 +6,7 @@ import MovieCard from "./MovieCard";
 import FilterGroup from "./FilterGroup";
 const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
-const MovieList = ({ type, title, emoji }) => {
+const MovieList = ({ type, title, movieList }) => {
   const [data, setData] = useState([]);
   const [minRating, setMinRating] = useState(0);
   const [filteredData, setFilteredData] = useState([]);
@@ -43,6 +43,11 @@ const MovieList = ({ type, title, emoji }) => {
   };
 
   const moviesAPI = async () => {
+    if (movieList) {
+      setData(movieList);
+      setFilteredData(movieList);
+      return;
+    }
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${type}?api_key=${api_key}`
     );
@@ -52,42 +57,44 @@ const MovieList = ({ type, title, emoji }) => {
   };
 
   return (
-    <section className="movie_list" id={type}>
-      <header className="align_center movie_list_header">
-        <h2 className="align_center movie_list_heading">
+    <section className="movie_list w-full " id={type}>
+      <header className=" movie_list_header">
+        <h2 className=" movie_list_heading">
           {title}{" "}
           {/* <img src={emoji} alt={`${emoji} emoji`} className="navbar_emoji" /> */}
         </h2>
-        <div className="align_center movie_list_fs">
-          <FilterGroup
-            minRating={minRating}
-            onRatingClick={handleFilter}
-            ratings={[8, 7, 6]}
-          />
-          <select
-            name="by"
-            id=""
-            onChange={handleSort}
-            value={sort.by}
-            className="movie_sorting"
-          >
-            <option value="default">SortBy</option>
-            <option value="release_date">Date</option>
-            <option value="vote_average">Rating</option>
-          </select>
-          <select
-            name="order"
-            id=""
-            onChange={handleSort}
-            value={sort.order}
-            className="movie_sorting"
-          >
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
-          </select>
-        </div>
+        {!filteredData || filteredData.length == 0 ? null : (
+          <div className="align_center movie_list_fs">
+            <FilterGroup
+              minRating={minRating}
+              onRatingClick={handleFilter}
+              ratings={[8, 7, 6]}
+            />
+            <select
+              name="by"
+              id=""
+              onChange={handleSort}
+              value={sort.by}
+              className="movie_sorting"
+            >
+              <option value="default">SortBy</option>
+              <option value="release_date">Date</option>
+              <option value="vote_average">Rating</option>
+            </select>
+            <select
+              name="order"
+              id=""
+              onChange={handleSort}
+              value={sort.order}
+              className="movie_sorting"
+            >
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </div>
+        )}
       </header>
-      <div className="movie_cards">
+      <div className="movie_cards w-full ">
         {filteredData.map((movie) => (
           <MovieCard key={movie.id} movie={movie}></MovieCard>
         ))}

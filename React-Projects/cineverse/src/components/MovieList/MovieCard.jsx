@@ -2,6 +2,7 @@ import React from "react";
 import Star from "../../assets/star.png";
 import "./MovieCard.css";
 const MovieCard = ({ movie }) => {
+  if (movie.poster_path === null) return null;
   return (
     <a
       href={`https://www.themoviedb.org/movie/${movie.id}`}

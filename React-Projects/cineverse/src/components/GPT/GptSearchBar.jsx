@@ -31,7 +31,7 @@ const GptSearchBar = () => {
     const query =
       "Act as a movie Recommendation System and suggest some movies for the query: " +
       searchText.current.value +
-      ". Only give me the top 5 movie names in a comma separated list, like the example result: Movie1, Movie2, Movie3, Movie4, Movie5";
+      ". Only give me the top 5 movie names in a comma separated list, like the example result: Movie1, Movie2, Movie3, Movie4, Movie5. Do not include any additional text. Incase of no results or content regulation issues, respond with 'No Results Found'";
     console.log("GPT Search Query:", query);
     if (!query) return;
     try {
@@ -40,7 +40,7 @@ const GptSearchBar = () => {
       const response1 = await clientAI.responses.create({
         model: "gpt-4o-mini",
         input: query,
-        max_output_tokens: 1000,
+        max_output_tokens: 10000,
       });
 
       console.log(response1.output_text);
@@ -57,7 +57,9 @@ const GptSearchBar = () => {
         movieResults
       );
       // Flattening the array to get a single list of movies
-      dispatch(addGPTMovies(movieResults.flat()));
+      dispatch(
+        addGPTMovies({ gptMovieNames: gptResult, gptResults: movieResults })
+      );
     } catch (error) {
       console.error("Error fetching GPT response:", error);
     }

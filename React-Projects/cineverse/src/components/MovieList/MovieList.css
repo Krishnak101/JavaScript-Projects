@@ -1,5 +1,6 @@
 .movie_list_header {
   padding: 10px 30px;
+  display: flex ;
   justify-content: space-between;
   margin-bottom: 5px;
 }
@@ -40,5 +41,5 @@
 .movie_cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
