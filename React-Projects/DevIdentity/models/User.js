@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { now } from "./../node_modules/mongodb/src/utils";
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -19,7 +18,7 @@ const UserSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    default: date.now,
+    default: Date.now,
   },
 });
 
