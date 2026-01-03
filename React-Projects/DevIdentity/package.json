@@ -1,6 +1,7 @@
 {
   "name": "devidentity",
   "version": "1.0.0",
+  "type": "module",
   "description": "Social Network for Developers",
   "main": "server.js",
   "scripts": {
