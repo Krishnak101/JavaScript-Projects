@@ -1,1 +1,2 @@
-Social Network Application for Developers
+# JavaScript-Projects
+A repository for JavaScript projects
