@@ -1,0 +1,41 @@
+/* .header_class {
+  position: absolute;
+} */
+
+.logo_class {
+  padding: 14px 9px;
+  background-color: black;
+}
+
+.login_container {
+  border: 1px;
+  border-radius: 13px;
+  opacity: 0.8;
+}
+.login_form {
+  padding: 10px;
+  margin: 34px;
+}
+
+.email_input,
+.password_input,
+.username_input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.login_button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff002b;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 25px 0;
+}

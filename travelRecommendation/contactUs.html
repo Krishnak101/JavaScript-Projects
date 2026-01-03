@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Recommendation</title>
+    <link rel="stylesheet" href="./travel_recommendation.css">
+</head>
+
+<body>
+    <nav>
+        <h2 style="color: white;"><img src="images/logos/travel_logo.png">
+            <div style="position:fixed;top:25px;left:80px;">Lets Travel</div>
+        </h2>
+        <ul>
+            <li>
+                <a href="./travel_recommendation.html">Home</a>
+            </li>
+            <li>
+                <a href="./aboutUs.html">About us</a>
+            </li>
+            <li>
+                <a href="#">Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="mainClass">
+        <div class="logoClass" style="position:absolute;left: 20px;top:65%;">
+
+            <a href="https://x.com/"><img src="./images/logos/twitter_logo.png"></a> <br>
+            <a href="https://www.facebook.com/"><img src="./images/logos/facebook_logo.png"></a> <br>
+            <a href="https://www.instagram.com/"><img src="./images/logos/instagram_logo.png"></a> <br>
+            <a href="https://www.youtube.com/"><img src="./images/logos/youtube_logo.png"></a> <br>
+        </div>
+        <div class="centerClass" style="width:60%;">
+            <h1 style="font-size: 5em;">CONTACT US</h1>
+            <p style="padding:45px;">Get in touch</p>
+        </div>
+        <div class="contactUsClass" id="contactUsId">
+            <label for="name">Name:</label><br>
+            <input id="name" type="text" placeholder="Enter your Name" required><br><br>
+            <label for="email">Email:</label><br>
+            <input id="email" type="email" placeholder="Enter your Email" required><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" rows="5" placeholder="Enter your Message" required></textarea><br><br>
+            <button id="btnSubmit" onclick="sumbitContactForm()"
+                style="background-color: rgba(12, 235, 49, 0.712);">Submit</button>
+        </div>
+    </div>
+    <script src="./travel_recommendation.js"></script>
+</body>
+
+</html>

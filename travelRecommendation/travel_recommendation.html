@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Recommendation</title>
+    <link rel="stylesheet" href="./travel_recommendation.css">
+</head>
+
+<body>
+    <nav>
+        <h2 style="color: white;"><img src="images/logos/travel_logo.png">
+            <div style="position:fixed;top:25px;left:80px;">Lets Travel</div>
+        </h2>
+        <ul>
+            <li>
+                <a href="./travel_recommendation.html">Home</a>
+            </li>
+            <li>
+                <a href="./aboutUs.html">About us</a>
+            </li>
+            <li>
+                <a href="./contactUs.html">Contact Us</a>
+            </li>
+        </ul>
+        <div class="searchContainer">
+            <input type="text" id="searchCondition" placeholder="Enter a Destination or keyword"
+                size="25px">&nbsp;&nbsp;
+            <button id="btnSearch" onclick="searchRecommendations()">Search</button>
+            <button id="btnClear" onclick="clearSearch()">Clear</button>
+        </div>
+    </nav>
+
+    <div class="mainClass">
+        <div class="logoClass" style="position:absolute;left: 20px;top:65%;">
+
+            <a href="https://x.com/"><img src="./images/logos/twitter_logo.png"></a> <br>
+            <a href="https://www.facebook.com/"><img src="./images/logos/facebook_logo.png"></a> <br>
+            <a href="https://www.instagram.com/"><img src="./images/logos/instagram_logo.png"></a> <br>
+            <a href="https://www.youtube.com/"><img src="./images/logos/youtube_logo.png"></a> <br>
+        </div>
+        <div class="centerClass">
+            <h1 style="font-size: 5em;color:black">EXPLORE YOUR DREAM DESTINATIONS</h1>
+            <p style="padding:45px;width:50%;background-color: rgba(0, 0, 0, 0.4);">It encourages exploration of
+                unfamiliar territories, embracing diverse
+                cultures and
+                landscapes, while
+                pursuing the desired destination that captivates the heart and ignites a sense of wonder</p>
+            <button id="btnBook">BOOK NOW</button>
+        </div>
+        <div id="resultsContainer">
+        </div>
+
+
+    </div>
+    <script src="./travel_recommendation.js"></script>
+</body>
+
+</html>
