@@ -5,6 +5,10 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+//initializing middleware for json body parsing capability
+app.use(express.json({ extended: false }));
+
+//define a simple route
 app.get("/", (req, res) => res.send("API running "));
 
 //define routes
@@ -12,6 +16,5 @@ app.use("/api/users", (await import("./routes/api/users.js")).default);
 app.use("/api/auth", (await import("./routes/api/auth.js")).default);
 app.use("/api/profile", (await import("./routes/api/profile.js")).default);
 app.use("/api/posts", (await import("./routes/api/posts.js")).default);
-
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
