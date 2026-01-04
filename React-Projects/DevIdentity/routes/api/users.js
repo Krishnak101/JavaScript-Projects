@@ -1,10 +1,10 @@
 import express from "express";
-import { check, validationResult } from "express-validator";
 import gravatar from "gravatar";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import config from "config";
 import User from "../../models/User.js";
+import { check, validationResult } from "express-validator";
 const router = express.Router();
 
 // @route    POST api/users
@@ -50,7 +50,7 @@ router.post(
 
       //create a jwt token for caching and authentication
       const payload = {
-        id: user.id,
+        user_id: user.id,
       };
       jwt.sign(
         payload,
@@ -61,7 +61,6 @@ router.post(
           res.json({ token });
         }
       );
-      console.log(req.body);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");
