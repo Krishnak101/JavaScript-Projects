@@ -1,5 +1,6 @@
 import express from "express";
 import auth from "../../middleware/auth.js";
+import User from "../../models/User.js";
 import Profile from "../../models/Profile.js";
 import { check, validationResult } from "express-validator";
 const router = express.Router();
@@ -19,7 +20,7 @@ router.get("/me", auth, async (req, res) => {
 
     res.json(profile);
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
     res.status(500).send("Server Error");
   }
 });
@@ -87,14 +88,15 @@ router.post(
           { $set: profileFields },
           { new: true }
         );
+        return res.json({ msg: "Profile Updated", Profile: profile });
       } else {
         //create a new profile
         profile = new Profile(profileFields);
         await profile.save();
+        return res.json({ msg: "Profile Created", Profile: profile });
       }
-      return res.json(profile);
     } catch (err) {
-      console.error(`error is : ${err.message}`);
+      console.error(err);
       res.status(500).send("Server Error");
     }
   }
@@ -108,7 +110,7 @@ router.get("/all", async (req, res) => {
     const profiles = await Profile.find().populate("user", ["name", "avatar"]);
     res.json(profiles);
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
     res.status(500).send("Server Error");
   }
 });
@@ -129,7 +131,23 @@ router.get("/user/:user_id", async (req, res) => {
     if (err.kind == "ObjectId") {
       return res.status(400).json({ msg: "Profile not found" });
     }
-    console.error(err.message);
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route    DELETE api/profile
+// @desc     Delete profile, user & posts
+// @access   Private
+router.delete("/", auth, async (req, res) => {
+  try {
+    await Profile.findOneAndDelete({ user: req.user_id });
+
+    await User.findOneAndDelete({ _id: req.user_id });
+
+    res.json({ msg: "User deleted" });
+  } catch (err) {
+    console.error(err);
     res.status(500).send("Server Error");
   }
 });
