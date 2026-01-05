@@ -205,8 +205,76 @@ router.delete("/experience/:exp_id", auth, async (req, res) => {
     const removeIndex = profile.experience
       .map((item) => item.id)
       .indexOf(req.params.exp_id);
-    
+    if (removeIndex === -1) {
+      return res.status(400).json({ msg: "Experience not found" });
+    }
     profile.experience.splice(removeIndex, 1);
+    await profile.save();
+    res.json(profile);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route    PUT api/profile/education
+// @desc     Add education info to Profile
+// @access   Private
+router.put(
+  "/education",
+  [
+    auth,
+    [
+      check("school", "School is required").not().isEmpty(),
+      check("degree", "Degree is required").not().isEmpty(),
+      check("fieldofstudy", "Field of Study is required").not().isEmpty(),
+      check("from", "From is required").not().isEmpty(),
+    ],
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      const { school, degree, fieldofstudy, from, to, current, description } =
+        req.body;
+
+      const educationalData = {
+        school,
+        degree,
+        fieldofstudy,
+        from,
+        to,
+        current,
+        description,
+      };
+
+      const profile = await Profile.findOne({ user: req.user_id });
+      profile.education.unshift(educationalData);
+      await profile.save();
+      res.json(profile);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Server Error");
+    }
+  }
+);
+
+// @route    DELETE api/profile/education/:education_id
+// @desc     Delete an education from profile
+// @access   Private
+router.delete("/education/:education_id", auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user_id });
+    //get remove index
+    const removeIndex = profile.education
+      .map((item) => item.id)
+      .indexOf(req.params.education_id);
+    if (removeIndex === -1) {
+      return res.status(400).json({ msg: "Education not found" });
+    }
+    profile.education.splice(removeIndex, 1);
     await profile.save();
     res.json(profile);
   } catch (err) {
