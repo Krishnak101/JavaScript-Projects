@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const ProfileSchema = new mongoose.Schema({
   user: {
+    // foreign key to User model
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
