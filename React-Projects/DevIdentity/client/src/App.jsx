@@ -1,10 +1,13 @@
 import { useState } from "react";
 import "./App.css";
+import Navbar from "./components/Navbar/Navbar";
+import Landing from "./components/Login/Landing";
 
 const App = () => {
   return (
     <>
-      <h1>DevIdentity</h1>
+      <Navbar />
+      <Landing />
     </>
   );
 };

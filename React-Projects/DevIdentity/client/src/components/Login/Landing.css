@@ -1,0 +1,55 @@
+.dark_overlay {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 0;
+}
+.landing_bg {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+
+  overflow: hidden;
+}
+.landing_bg > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.landing_inner {
+  position: absolute;
+  text-align: center;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+
+  z-index: 1;
+}
+
+.landing_buttons > a {
+  margin: 10px 3px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: #3942e6;
+  
+}
+
+.landing_buttons > a:hover {
+  color: #000000;
+  font-weight: bold;
+}
+
+.lead {
+  font-size: 20px;
+  margin: 20px 0;
+}
+#btn_signup{
+  background-color: rgb(77, 104, 213);
+}
+
