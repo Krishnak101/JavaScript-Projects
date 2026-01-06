@@ -1,6 +1,7 @@
 import React from "react";
 import BG_IMAGE from "../../assets/bg-image.jpg";
 import "./Landing.css";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -16,16 +17,16 @@ const Landing = () => {
             other developers
           </p>
           <div className="landing_buttons">
-            <a
-              href="register.html"
+            <Link
+              to="/register"
               id="btn_signup"
               className=" btn btn-primary btn-lg"
             >
               Sign Up
-            </a>
-            <a href="login.html" className="btn btn-light btn-lg">
+            </Link>
+            <Link to="/login" className="btn btn-light btn-lg">
               Login
-            </a>
+            </Link>
           </div>
         </div>
       </div>
