@@ -18,13 +18,18 @@ const Landing = () => {
           </p>
           <div className="landing_buttons">
             <Link
-              to="/register"
+              to="/login"
               id="btn_signup"
+              state={{ isLogInForm: false }}
               className=" btn btn-primary btn-lg"
             >
               Sign Up
             </Link>
-            <Link to="/login" className="btn btn-light btn-lg">
+            <Link
+              to="/login"
+              state={{ isLogInForm: true }}
+              className="btn btn-light btn-lg"
+            >
               Login
             </Link>
           </div>

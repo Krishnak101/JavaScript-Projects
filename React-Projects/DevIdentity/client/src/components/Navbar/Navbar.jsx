@@ -21,7 +21,9 @@ const Navbar = () => {
           <Link to="/dashboard">Dashboard</Link>
         </li>
         <li>
-          <Link to="/login">Login</Link>
+          <Link to="/login" state={{ isLogInForm: true }}>
+            Login
+          </Link>
         </li>
       </ul>
     </nav>
