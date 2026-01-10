@@ -12,11 +12,7 @@ const Login = () => {
     location.state?.isLogInForm ?? false
   );
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
-
-  if (user) {
-    return <Navigate to="/" replace={true} />;
-  }
+  const userStore = useSelector((state) => state.user);
 
   const toggleForm = () => {
     setIsLogInForm(!isLogInForm);
@@ -43,6 +39,10 @@ const Login = () => {
     if (message) return;
     handleUserAuth(isLogInForm, username, email, password)(dispatch);
   };
+
+  if (userStore?.token) {
+    return <Navigate to="/" replace={true} />;
+  }
 
   return (
     <div className="header_class text-white">
