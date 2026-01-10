@@ -1,16 +1,22 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect, use } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Landing from "./components/Home/Landing";
 import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUserData } from "./components/utils/actions/auth.js";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Alert from "./components/Home/Alert";
 
 const App = () => {
   const alert = useSelector((state) => state.alert);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
       <Fragment>

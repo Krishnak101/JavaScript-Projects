@@ -37,3 +37,8 @@ a:hover {
 .navbar > ul > li > a:hover {
   font-weight: bold;
 }
+
+.navbar > ul > li > .active {
+  font-weight: bold;
+  border-bottom: 2px solid #ffffff;
+}

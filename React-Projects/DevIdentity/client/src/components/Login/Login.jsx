@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 import "./Login.css";
-import { checkValidData } from "./validate";
+import { checkValidData } from "../utils/validate.js";
 import BACKGROUND_IMAGE from "../../assets/bg-image.jpg";
 import { handleUserAuth, logoutUser } from "../utils/actions/auth.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const location = useLocation();
@@ -12,6 +12,11 @@ const Login = () => {
     location.state?.isLogInForm ?? false
   );
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+
+  if (user) {
+    return <Navigate to="/" replace={true} />;
+  }
 
   const toggleForm = () => {
     setIsLogInForm(!isLogInForm);

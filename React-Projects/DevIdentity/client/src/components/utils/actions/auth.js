@@ -1,6 +1,11 @@
 import axios from "axios";
-import { setUserState, clearUserState } from "../reduxStore/userSlice";
+import {
+  setUserState,
+  clearUserState,
+  setUserData,
+} from "../reduxStore/userSlice";
 import { setAlertWithTimeOut } from "./alerts";
+import { setAuthToken } from "../helper.js";
 
 export const handleUserAuth =
   (isLogInForm, username, email, password) => async (dispatch) => {
@@ -27,6 +32,13 @@ export const handleUserAuth =
       dispatch(
         setUserState({ token: response.data.token, email: email.current.value })
       );
+      dispatch(fetchUserData());
+      dispatch(
+        setAlertWithTimeOut(
+          isLogInForm ? "Login Successful" : "Registration Successful",
+          "success"
+        )
+      );
     } catch (error) {
       console.error("Authentication Error: ", error);
       const errors = error.response?.data?.errors;
@@ -38,4 +50,19 @@ export const handleUserAuth =
 
 export const logoutUser = () => (dispatch) => {
   dispatch(clearUserState());
+};
+
+export const fetchUserData = () => async (dispatch) => {
+  if (localStorage.getItem("token")) {
+    setAuthToken(localStorage.getItem("token"));
+
+    try {
+      const response = await axios.get("/api/auth");
+      dispatch(setUserData(response.data));
+    } catch (error) {
+      console.error("Fetch User Data Error: ", error);
+      dispatch(clearUserState());
+      dispatch(setAlertWithTimeOut("Failed to fetch user data", "danger"));
+    }
+  }
 };

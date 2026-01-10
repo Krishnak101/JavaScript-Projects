@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -12,18 +12,18 @@ const Navbar = () => {
       </h1>
       <ul>
         <li>
-          <Link to="/profiles">Developers</Link>
+          <NavLink to="/profiles">Developers</NavLink>
         </li>
         <li>
-          <Link to="/posts">Posts</Link>
+          <NavLink to="/posts">Posts</NavLink>
         </li>
         <li>
-          <Link to="/dashboard">Dashboard</Link>
+          <NavLink to="/dashboard">Dashboard</NavLink>
         </li>
         <li>
-          <Link to="/login" state={{ isLogInForm: true }}>
+          <NavLink to="/login" state={{ isLogInForm: true }}>
             Login
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>
