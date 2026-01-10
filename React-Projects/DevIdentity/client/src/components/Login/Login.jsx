@@ -3,14 +3,40 @@ import { useLocation } from "react-router-dom";
 import "./Login.css";
 import { checkValidData } from "./validate";
 import BACKGROUND_IMAGE from "../../assets/bg-image.jpg";
+import { handleUserAuth, logoutUser } from "../utils/actions/auth.js";
+import { useDispatch } from "react-redux";
+
 const Login = () => {
   const location = useLocation();
   const [isLogInForm, setIsLogInForm] = useState(
     location.state?.isLogInForm ?? false
   );
+  const dispatch = useDispatch();
 
   const toggleForm = () => {
     setIsLogInForm(!isLogInForm);
+  };
+
+  const username = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+  const passwordConfirmation = useRef(null);
+
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const onFormSubmit = async (e) => {
+    e.preventDefault();
+    // form validation logic here
+    const message = checkValidData(
+      isLogInForm,
+      email.current.value,
+      password.current.value,
+      username.current ? username.current.value : null,
+      passwordConfirmation.current ? passwordConfirmation.current.value : null
+    );
+    setErrorMessage(message);
+    if (message) return;
+    handleUserAuth(isLogInForm, username, email, password)(dispatch);
   };
 
   return (
@@ -23,12 +49,14 @@ const Login = () => {
         />
       </div>
       <div className="login_form z-5 absolute bg-black   w-1/4 top-1/5 left-1/3">
-        <h1 className="font-bold text-3xl">
-          {isLogInForm ? "Log In" : "Sign Up"}{" "}
+        <h1 className="font-bold text-2xl">
+          <span className="fa-sharp fa-solid fa-user"></span>
+          {isLogInForm ? "Login To Your Account" : "Create An Account"}{" "}
         </h1>
-        <form className="register_form">
+        <form className="register_form" onSubmit={(e) => onFormSubmit(e)}>
           {!isLogInForm && (
             <input
+              ref={username}
               type="text"
               id="username"
               name="username"
@@ -39,6 +67,7 @@ const Login = () => {
           )}
 
           <input
+            ref={email}
             type="email"
             id="email"
             name="email"
@@ -48,6 +77,7 @@ const Login = () => {
           />
 
           <input
+            ref={password}
             type="password"
             id="password"
             name="password"
@@ -57,6 +87,7 @@ const Login = () => {
           />
           {!isLogInForm && (
             <input
+              ref={passwordConfirmation}
               type="password"
               id="password_confirmation"
               name="password_confirmation"
@@ -65,6 +96,8 @@ const Login = () => {
               className="p-2 m-2"
             />
           )}
+
+          <p className="font-bold text-red-500 ">{errorMessage}</p>
 
           <button type="submit" className="submit_btn bg-blue-700 font-bold">
             {isLogInForm ? "Log In" : "Sign Up"}

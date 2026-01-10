@@ -8,7 +8,7 @@ import { check, validationResult } from "express-validator";
 const router = express.Router();
 
 // @route    GET api/auth
-// @desc     Test route
+// @desc     Fetch authenticated user Details
 // @access   Public
 router.get("/", auth, async (req, res) => {
   try {
