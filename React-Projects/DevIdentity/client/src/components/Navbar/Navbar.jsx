@@ -15,15 +15,18 @@ const Navbar = () => {
         </Link>
       </h1>
       <ul>
+        {userStore?.token && (
+          <li>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </li>
+        )}
         <li>
           <NavLink to="/profiles">Developers</NavLink>
         </li>
         <li>
           <NavLink to="/posts">Posts</NavLink>
         </li>
-        <li>
-          <NavLink to="/dashboard">Dashboard</NavLink>
-        </li>
+
         <li>
           {userStore?.token ? (
             <button

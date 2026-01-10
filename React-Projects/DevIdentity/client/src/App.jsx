@@ -1,14 +1,17 @@
-import { Fragment, useState, useEffect, use } from "react";
+import { Fragment, useEffect, use } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Landing from "./components/Home/Landing";
 import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
+import Dashboard from "./components/Home/Dashboard.jsx";
+import Alert from "./components/Home/Alert";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserData } from "./components/utils/actions/auth.js";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Alert from "./components/Home/Alert";
+import PrivateRoute from "./components/Routing/PrivateRoute.jsx";
+import Posts from "./components/Posts/Posts";
 
 const App = () => {
   const alert = useSelector((state) => state.alert);
@@ -23,9 +26,13 @@ const App = () => {
         <Navbar />
         {alert && <Alert alert={alert}></Alert>}
         <Routes>
-          <Route path="/" element={<Landing></Landing>} />
+          <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profiles" element={<Profile />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/posts" element={<Posts />} />
+          </Route>
         </Routes>
       </Fragment>
     </BrowserRouter>

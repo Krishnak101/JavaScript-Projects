@@ -41,7 +41,7 @@ const Login = () => {
   };
 
   if (userStore?.token) {
-    return <Navigate to="/" replace={true} />;
+    return <Navigate to="/dashboard" replace={true} />;
   }
 
   return (
