@@ -114,7 +114,7 @@ const CreateProfile = () => {
           <button
             type="button"
             onClick={toggleSocials}
-            className="bg-red-500 rounded hover:bg-red-700 transition show_socials_btn"
+            className="bg-red-600 rounded hover:bg-red-700 transition show_socials_btn"
           >
             &nbsp;&nbsp;Include Social Network Links&nbsp;&nbsp;
           </button>{" "}

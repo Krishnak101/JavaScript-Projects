@@ -42,11 +42,10 @@ export const handleUserAuth =
       );
       dispatch(fetchUserData());
     } catch (error) {
-      console.error("Authentication Error: ", error);
       const errors = error.response?.data?.errors;
-      if (errors) {
-        dispatch(setAlertWithTimeOut(errors[0].msg, "danger"));
-      }
+      const errors_msg = errors.map((err) => err.msg).join(" | ");
+      console.error("Error:: handleUserAuth() : ", errors_msg);
+      dispatch(setAlertWithTimeOut(errors_msg, "danger"));
     }
   };
 
@@ -60,7 +59,7 @@ export const fetchUserData = () => async (dispatch) => {
       const response = await axios.get("/api/auth");
       dispatch(setUserData(response.data));
     } catch (error) {
-      console.error("Fetch User Data Error: ", error);
+      console.error("Error:: fetchUserData() : ", error);
       dispatch(setAlertWithTimeOut("Failed to fetch user data", "danger"));
     }
   }
