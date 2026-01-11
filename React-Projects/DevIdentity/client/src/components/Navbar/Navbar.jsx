@@ -17,7 +17,10 @@ const Navbar = () => {
       <ul>
         {userStore?.token && (
           <li>
-            <NavLink to="/dashboard">Dashboard</NavLink>
+            <NavLink to="/dashboard">
+              <i className="fa-sharp fa-solid fa-user"></i>
+              <span className="hide-sm">Dashboard</span>
+            </NavLink>
           </li>
         )}
         <li>

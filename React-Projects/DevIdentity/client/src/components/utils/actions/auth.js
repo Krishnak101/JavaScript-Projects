@@ -29,16 +29,18 @@ export const handleUserAuth =
       const response = await axios.post(apiEndpoint, body, config);
 
       console.log("Response Data: ", response);
-      dispatch(
-        setUserState({ token: response.data.token, email: email.current.value })
-      );
-      dispatch(fetchUserData());
+      const token = response.data.token;
+      // Set token in axios headers for future requests
+      setAuthToken(token);
+      // Fetch user data after authentication
+      dispatch(setUserState({ token: token, email: email.current.value }));
       dispatch(
         setAlertWithTimeOut(
           isLogInForm ? "Login Successful" : "Registration Successful",
           "success"
         )
       );
+      dispatch(fetchUserData());
     } catch (error) {
       console.error("Authentication Error: ", error);
       const errors = error.response?.data?.errors;
@@ -54,14 +56,11 @@ export const logoutUser = () => (dispatch) => {
 
 export const fetchUserData = () => async (dispatch) => {
   if (localStorage.getItem("token")) {
-    setAuthToken(localStorage.getItem("token"));
-
     try {
       const response = await axios.get("/api/auth");
       dispatch(setUserData(response.data));
     } catch (error) {
       console.error("Fetch User Data Error: ", error);
-      dispatch(clearUserState());
       dispatch(setAlertWithTimeOut("Failed to fetch user data", "danger"));
     }
   }

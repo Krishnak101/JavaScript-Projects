@@ -1,0 +1,17 @@
+.dashboard_top {
+  margin-left: 35px;
+}
+.create_profile_link {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 15px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.create_profile_link:hover {
+  background-color: #0056b3;
+  color: white;
+}

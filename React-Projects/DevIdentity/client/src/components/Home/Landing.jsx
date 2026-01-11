@@ -1,9 +1,14 @@
 import React from "react";
 import BG_IMAGE from "../../assets/bg-image.jpg";
 import "./Landing.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Landing = () => {
+  const token = useSelector((state) => state.user.token);
+  if (token) {
+    return <Navigate to="/dashboard" replace={true} />;
+  }
   return (
     <section className="landing">
       <div className="dark_overlay">
