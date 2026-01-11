@@ -27,7 +27,7 @@ const Dashboard = () => {
         <Fragment>
           <p>You haven't setup your profile yet. Please add some info</p>
           <Link
-            to="/profiles"
+            to="/create-profile"
             className="create_profile_link btn btn-primary my-1"
           >
             Create Profile

@@ -12,6 +12,7 @@ import { fetchUserData } from "./components/utils/actions/auth.js";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PrivateRoute from "./components/Routing/PrivateRoute.jsx";
 import Posts from "./components/Posts/Posts";
+import CreateProfile from "./components/Profile/CreateProfile.jsx";
 
 const App = () => {
   const alert = useSelector((state) => state.alert);
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/profiles" element={<Profile />} />
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/create-profile" element={<CreateProfile />} />
             <Route path="/posts" element={<Posts />} />
           </Route>
         </Routes>

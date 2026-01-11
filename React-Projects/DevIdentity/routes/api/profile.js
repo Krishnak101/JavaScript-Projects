@@ -54,9 +54,7 @@ router.post(
       github_username,
       twitter,
       linkedin,
-      facebook,
       youtube,
-      instagram,
     } = req.body;
     // Building the profile object
     const profileFields = {};
@@ -75,9 +73,7 @@ router.post(
     profileFields.social = {};
     if (twitter) profileFields.social.twitter = twitter;
     if (linkedin) profileFields.social.linkedin = linkedin;
-    if (facebook) profileFields.social.facebook = facebook;
     if (youtube) profileFields.social.youtube = youtube;
-    if (instagram) profileFields.social.instagram = instagram;
 
     console.log(profileFields);
 
