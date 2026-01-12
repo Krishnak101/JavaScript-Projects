@@ -222,15 +222,11 @@ const CreateProfile = ({ isEditPage }) => {
           </>
         )}
         <div className="form_btns">
-          <button type="submit" className="submit_btn bg-blue-700 font-bold">
-            &nbsp;&nbsp;Submit&nbsp;&nbsp;
+          <button type="submit" className="submit_btn">
+            Submit
           </button>
-          <button
-            type="button"
-            onClick={clearForm}
-            className="cancel_btn bg-red-700 font-bold"
-          >
-            &nbsp;&nbsp;Cancel&nbsp;&nbsp;
+          <button type="button" onClick={clearForm} className="cancel_btn">
+            Go Back
           </button>
         </div>
       </form>

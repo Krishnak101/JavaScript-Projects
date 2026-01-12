@@ -22,7 +22,8 @@
 .register_form > input,
 .register_form > select,
 .register_form > textarea,
-.register_form .socials {
+.register_form .socials,
+.register_form .dates {
   width: 100%;
   padding: 8px;
   margin: 7px 0;
@@ -34,14 +35,22 @@
   font-weight: 550;
 }
 
+#dates_info {
+  color: gray;
+}
+
 .socials .social_link {
   padding: 6px;
   width: 90%;
 }
+.dates .dates_input {
+  padding: 6px;
+  width: 60%;
+}
 
 .submit_btn,
 .cancel_btn {
-  width: 100%;
+  width: 100px;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -49,6 +58,12 @@
   font-weight: 600;
   cursor: pointer;
   margin: 15px 20px 5px 20px;
+}
+.submit_btn {
+  background-color: rgb(53, 53, 239);
+}
+.cancel_btn {
+  background-color: rgb(201, 8, 8);
 }
 
 .submit_btn:hover,

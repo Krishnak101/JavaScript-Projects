@@ -104,7 +104,7 @@ const Login = () => {
 
           <p className="font-bold text-red-500 ">{errorMessage}</p>
 
-          <button type="submit" className="submit_btn bg-blue-700 font-bold">
+          <button type="submit" className="submit_btn">
             {isLogInForm ? "Log In" : "Sign Up"}
           </button>
         </form>

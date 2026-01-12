@@ -13,6 +13,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PrivateRoute from "./components/Routing/PrivateRoute.jsx";
 import Posts from "./components/Posts/Posts";
 import CreateProfile from "./components/Profile/CreateProfile.jsx";
+import AddExperience from "./components/Profile/AddExperience.jsx";
+import AddEducation from "./components/Profile/AddEducation.jsx";
 
 const App = () => {
   const alert = useSelector((state) => state.alert);
@@ -37,8 +39,8 @@ const App = () => {
               path="/edit-profile"
               element={<CreateProfile isEditPage={true} />}
             />
-            <Route path="/add-experience" element={<CreateProfile />} />
-            <Route path="/add-education" element={<CreateProfile />} />
+            <Route path="/add-experience" element={<AddExperience />} />
+            <Route path="/add-education" element={<AddEducation />} />
             <Route path="/posts" element={<Posts />} />
           </Route>
         </Routes>

@@ -6,7 +6,14 @@ import {
   clearProfile,
   setRepos,
   setIsProfileLoaded,
+  setExperience,
 } from "../reduxStore/profileSlice";
+
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
 
 export const getCurrentUserProfile = () => async (dispatch) => {
   try {
@@ -48,11 +55,6 @@ export const setCurrentUserProfile =
   (formData, navigate, isEditPage = false) =>
   async (dispatch) => {
     try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
       const body = JSON.stringify(formData);
       const response = await axios.post("/api/profile", body, config);
       dispatch(setProfile(response.data.Profile));
@@ -69,6 +71,40 @@ export const setCurrentUserProfile =
       const errors = error.response?.data?.errors;
       const errors_msg = errors.map((err) => err.msg).join(" | ");
       console.error("Error :: setCurrentUserProfile() : ", errors_msg);
+      dispatch(setAlertWithTimeOut(errors_msg, "danger"));
+    }
+  };
+
+export const setCurrentUserExperience =
+  (formData, navigate) => async (dispatch) => {
+    try {
+      const body = JSON.stringify(formData);
+      const response = await axios.put("/api/profile/experience", body, config);
+
+      dispatch(setProfile(response.data));
+      dispatch(setAlertWithTimeOut("Experience Added Successfully", "success"));
+      navigate("/dashboard");
+    } catch (error) {
+      const errors = error.response?.data?.errors;
+      const errors_msg = errors.map((err) => err.msg).join(" | ");
+      console.error("Error :: setCurrentUserExperience() : ", errors_msg);
+      dispatch(setAlertWithTimeOut(errors_msg, "danger"));
+    }
+  };
+
+export const setCurrentUserEducation =
+  (formData, navigate) => async (dispatch) => {
+    try {
+      const body = JSON.stringify(formData);
+      const response = await axios.put("/api/profile/education", body, config);
+
+      dispatch(setProfile(response.data));
+      dispatch(setAlertWithTimeOut("Education Added Successfully", "success"));
+      navigate("/dashboard");
+    } catch (error) {
+      const errors = error.response?.data?.errors;
+      const errors_msg = errors.map((err) => err.msg).join(" | ");
+      console.error("Error :: setCurrentUserEducation() : ", errors_msg);
       dispatch(setAlertWithTimeOut(errors_msg, "danger"));
     }
   };
