@@ -43,3 +43,32 @@ export const getProfileById = (userId) => async (dispatch) => {
     dispatch(setAlertWithTimeOut("Error fetching profile by ID", "danger"));
   }
 };
+
+export const setCurrentUserProfile =
+  (formData, navigate, isEditPage = false) =>
+  async (dispatch) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const body = JSON.stringify(formData);
+      const response = await axios.post("/api/profile", body, config);
+      dispatch(setProfile(response.data.Profile));
+      dispatch(
+        setAlertWithTimeOut(
+          isEditPage
+            ? "Profile Updated Successfully"
+            : "Profile Created Successfully",
+          "success"
+        )
+      );
+      navigate("/dashboard");
+    } catch (error) {
+      const errors = error.response?.data?.errors;
+      const errors_msg = errors.map((err) => err.msg).join(" | ");
+      console.error("Error :: setCurrentUserProfile() : ", errors_msg);
+      dispatch(setAlertWithTimeOut(errors_msg, "danger"));
+    }
+  };

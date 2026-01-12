@@ -71,9 +71,12 @@ router.post(
 
     // Build social object
     profileFields.social = {};
-    if (twitter) profileFields.social.twitter = twitter;
-    if (linkedin) profileFields.social.linkedin = linkedin;
-    if (youtube) profileFields.social.youtube = youtube;
+    if (twitter && twitter.trim().length != 0)
+      profileFields.social.twitter = twitter;
+    if (linkedin && linkedin.trim().length != 0)
+      profileFields.social.linkedin = linkedin;
+    if (youtube && youtube.trim().length != 0)
+      profileFields.social.youtube = youtube;
 
     console.log(profileFields);
 

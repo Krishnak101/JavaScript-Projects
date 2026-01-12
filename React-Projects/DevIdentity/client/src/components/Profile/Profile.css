@@ -1,0 +1,12 @@
+.profile_actions > a {
+  margin-top: 20px;
+  margin-left: 15px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+.profile_actions > a:hover {
+  background-color: #0056b3;
+  color: white;
+}

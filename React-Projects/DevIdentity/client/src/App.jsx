@@ -33,6 +33,12 @@ const App = () => {
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/create-profile" element={<CreateProfile />} />
+            <Route
+              path="/edit-profile"
+              element={<CreateProfile isEditPage={true} />}
+            />
+            <Route path="/add-experience" element={<CreateProfile />} />
+            <Route path="/add-education" element={<CreateProfile />} />
             <Route path="/posts" element={<Posts />} />
           </Route>
         </Routes>

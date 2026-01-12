@@ -21,7 +21,8 @@
 
 .register_form > input,
 .register_form > select,
-.register_form > textarea {
+.register_form > textarea,
+.register_form .socials {
   width: 100%;
   padding: 8px;
   margin: 7px 0;
@@ -33,7 +34,13 @@
   font-weight: 550;
 }
 
-.submit_btn {
+.socials .social_link {
+  padding: 6px;
+  width: 90%;
+}
+
+.submit_btn,
+.cancel_btn {
   width: 100%;
   padding: 10px;
   border: none;
@@ -41,9 +48,16 @@
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  margin: 15px 0px 5px 0px;
+  margin: 15px 20px 5px 20px;
 }
 
-.submit_btn:hover {
+.submit_btn:hover,
+.cancel_btn:hover {
   opacity: 0.8;
+}
+
+.form_btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
