@@ -1,4 +1,4 @@
-import { Fragment, useEffect, use } from "react";
+import { Fragment, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Landing from "./components/Home/Landing";
@@ -15,6 +15,7 @@ import Posts from "./components/Posts/Posts";
 import CreateProfile from "./components/Profile/CreateProfile.jsx";
 import AddExperience from "./components/Profile/AddExperience.jsx";
 import AddEducation from "./components/Profile/AddEducation.jsx";
+import ExperienceTimeline from "./components/Profile/ExperienceTimeLine.jsx";
 
 const App = () => {
   const alert = useSelector((state) => state.alert);
@@ -41,6 +42,8 @@ const App = () => {
             />
             <Route path="/add-experience" element={<AddExperience />} />
             <Route path="/add-education" element={<AddEducation />} />
+            <Route path="/show-timeline" element={<ExperienceTimeline />} />
+
             <Route path="/posts" element={<Posts />} />
           </Route>
         </Routes>

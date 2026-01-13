@@ -1,0 +1,34 @@
+.experience_container {
+  margin: 50px;
+}
+
+.timeline-card {
+  padding: 20px;
+}
+
+/* Base style for the arrow */
+.timeline-card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* Arrow for cards on the LEFT (index is odd, points right) */
+/* This assumes standard flex-row layout */
+.timeline-card::after {
+  right: -10px; /* Positions it outside the card boundary */
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #fdf2f8; /* Matches the border-pink-100 hex */
+}
+
+/* Arrow for cards on the RIGHT (index is even, flex-row-reverse, points left) */
+.flex-row-reverse .timeline-card::after {
+  left: -10px;
+  right: auto;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #fdf2f8 transparent transparent;
+}

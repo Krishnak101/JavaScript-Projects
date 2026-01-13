@@ -28,7 +28,7 @@ export const handleUserAuth =
           });
       const response = await axios.post(apiEndpoint, body, config);
 
-      console.log("Response Data: ", response);
+      console.log("handleUserAuth() :: Response Data: ", response);
       const token = response.data.token;
       // Set token in axios headers for future requests
       setAuthToken(token);
@@ -60,7 +60,17 @@ export const fetchUserData = () => async (dispatch) => {
       dispatch(setUserData(response.data));
     } catch (error) {
       console.error("Error:: fetchUserData() : ", error);
-      dispatch(setAlertWithTimeOut("Failed to fetch user data", "danger"));
+      if (error.response.data.error === "jwt expired") {
+        dispatch(logoutUser());
+        dispatch(
+          setAlertWithTimeOut(
+            "Session Expired! Please Login again to continue...",
+            "danger"
+          )
+        );
+      } else {
+        dispatch(setAlertWithTimeOut("Failed to fetch user data", "danger"));
+      }
     }
   }
 };
