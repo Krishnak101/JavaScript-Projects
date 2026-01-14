@@ -11,7 +11,8 @@ const Navbar = () => {
     <nav className="navbar">
       <h1>
         <Link to="/">
-          <i className="fas fa-code "></i> DevIdentity
+          <i className="fas fa-code "></i>{" "}
+          <span className="hide-sm">DevIdentity</span>
         </Link>
       </h1>
       <ul>

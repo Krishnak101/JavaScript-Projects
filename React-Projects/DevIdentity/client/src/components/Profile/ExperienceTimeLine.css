@@ -1,5 +1,5 @@
 .experience_container {
-  margin: 50px;
+  margin: 15px 50px;
 }
 
 .timeline-card {
@@ -31,4 +31,20 @@
   right: auto;
   border-width: 10px 10px 10px 0;
   border-color: transparent #fdf2f8 transparent transparent;
+}
+
+.delete_icon {
+  opacity: 0.4;
+  font-size: xx-small;
+}
+.experience_card:hover .delete_icon {
+  padding-top: 5px;
+  opacity: 1;
+  font-size: large;
+}
+
+.delete_icon:hover {
+  background-color: rgb(247, 255, 1);
+  border-radius: 50%;
+  padding: 2px 1px 3px 1px;
 }

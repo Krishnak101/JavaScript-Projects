@@ -55,14 +55,15 @@ const ExperienceTimeline = () => {
       <div className="space-y-12">
         {sortedTimeline.map((item, index) => (
           <div
-            key={item._id || index}
+            key={item._id}
+            draggable
             className={`flex items-center justify-between w-full mb-8 ${
               index % 2 === 0 ? "flex-row-reverse" : ""
             }`}
           >
             {/* 1. The Content Card */}
             <div
-              className={`relative w-5/12 p-6 bg-white border rounded-lg shadow-sm hover:shadow-md transition-shadow timeline-card ${
+              className={`experience_card relative w-5/12 p-6 bg-white border rounded-lg shadow-sm hover:shadow-md transition-shadow timeline-card ${
                 item.type === "education"
                   ? "border-blue-200"
                   : "border-pink-200"
@@ -102,6 +103,7 @@ const ExperienceTimeline = () => {
                 <p className="mt-4 text-gray-700 leading-relaxed">
                   {item.description}
                 </p>
+                <i className="delete_icon fa-solid fa-trash"></i>
               </div>
             </div>
 

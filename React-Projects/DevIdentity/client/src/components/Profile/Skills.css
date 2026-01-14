@@ -1,0 +1,10 @@
+.skills_top_container {
+  padding: 20px 10px;
+  margin: 10px 50px;
+}
+.skill_container:hover {
+  transform: scale(1.1);
+}
+.skill_name {
+  padding-left: 5px;
+}

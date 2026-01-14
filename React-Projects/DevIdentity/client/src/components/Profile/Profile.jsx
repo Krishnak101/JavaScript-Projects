@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Profile.css";
 import ExperienceTimeline from "./ExperienceTimeLine";
+import Skills from "./Skills";
 
 const Profile = () => {
   return (
@@ -24,6 +25,7 @@ const Profile = () => {
           Show Experience
         </Link>
       </div>
+      <Skills />
       <ExperienceTimeline />
     </div>
   );

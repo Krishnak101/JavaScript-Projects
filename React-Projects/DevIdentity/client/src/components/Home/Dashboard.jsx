@@ -30,7 +30,7 @@ const Dashboard = () => {
             to="/create-profile"
             className="create_profile_link btn btn-primary my-1"
           >
-            Create Profile
+            <i class="fa-solid fa-pen-to-square"></i> &nbsp;Create Profile
           </Link>
         </Fragment>
       ) : (
