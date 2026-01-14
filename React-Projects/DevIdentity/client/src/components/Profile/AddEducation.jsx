@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setCurrentUserEducation } from "../utils/actions/profile";
+import { validateDateRange } from "../utils/validate";
+import { setAlertWithTimeOut } from "../utils/actions/alerts";
 const AddEducation = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -17,7 +19,15 @@ const AddEducation = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    console.log("hello :", currentJob.current.checked);
+    const errorMessage = validateDateRange(
+      from.current.value,
+      to.current.value,
+      currentJobCheck
+    );
+    if (errorMessage) {
+      dispatch(setAlertWithTimeOut(errorMessage, "danger"));
+      return;
+    }
     const educationFormData = {
       school: school.current.value,
       degree: degree.current.value,
@@ -65,8 +75,14 @@ const AddEducation = () => {
         />
 
         <div className="dates text-gray-600">
-          <i id="dates_info">Start Date : </i>
-          <input type="date" className="dates_input" name="from" ref={from} />
+          <i id="dates_info">* Start Date : </i>
+          <input
+            type="date"
+            required
+            className="dates_input"
+            name="from"
+            ref={from}
+          />
         </div>
         <p>
           <input
@@ -81,11 +97,12 @@ const AddEducation = () => {
         <br></br>
         {!currentJobCheck && (
           <div className="dates">
-            <i id="dates_info">End Date : </i>
+            <i id="dates_info">* End Date : </i>
             <input
               type="date"
               className="dates_input"
               name="to"
+              required
               ref={to}
               disabled={currentJobCheck}
             />

@@ -27,9 +27,6 @@ const profileSlice = createSlice({
     setIsProfileLoaded: (state, action) => {
       state.isProfileLoaded = action.payload;
     },
-    setExperience: (state, action) => {
-      state.profile.experience = action.payload;
-    },
   },
 });
 
@@ -39,6 +36,5 @@ export const {
   clearProfile,
   setRepos,
   setIsProfileLoaded,
-  setExperience,
 } = profileSlice.actions;
 export default profileSlice.reducer;

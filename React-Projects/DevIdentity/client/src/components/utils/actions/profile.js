@@ -6,7 +6,6 @@ import {
   clearProfile,
   setRepos,
   setIsProfileLoaded,
-  setExperience,
 } from "../reduxStore/profileSlice";
 
 const config = {
@@ -108,3 +107,19 @@ export const setCurrentUserEducation =
       dispatch(setAlertWithTimeOut(errors_msg, "danger"));
     }
   };
+
+export const deleteExperienceOrEducation = (id, type) => async (dispatch) => {
+  try {
+    const response = await axios.delete(`/api/profile/${type}/${id}`);
+    dispatch(setProfile(response.data));
+    dispatch(
+      setAlertWithTimeOut(
+        `${type.toUpperCase()} Removed Successfully`,
+        "success"
+      )
+    );
+  } catch (error) {
+    console.error("Error :: deleteExperienceOrEducation() : ", error);
+    dispatch(setAlertWithTimeOut(error.response?.data?.msg, "danger"));
+  }
+};

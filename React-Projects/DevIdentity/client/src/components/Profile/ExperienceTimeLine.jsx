@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./ExperienceTimeLine.css";
-import { getCurrentUserProfile } from "../utils/actions/profile";
+import {
+  deleteExperienceOrEducation,
+  getCurrentUserProfile,
+} from "../utils/actions/profile";
 import Spinner from "../Home/Spinner";
 
 const ExperienceTimeline = () => {
@@ -40,6 +43,10 @@ const ExperienceTimeline = () => {
   const sortedTimeline = combinedData.sort((a, b) => {
     return new Date(b.from) - new Date(a.from);
   });
+
+  const deleteItem = (id, type) => {
+    dispatch(deleteExperienceOrEducation(id, type));
+  };
 
   if (sortedTimeline.length === 0) {
     return <p className="text-center text-gray-500">No history added yet.</p>;
@@ -103,7 +110,10 @@ const ExperienceTimeline = () => {
                 <p className="mt-4 text-gray-700 leading-relaxed">
                   {item.description}
                 </p>
-                <i className="delete_icon fa-solid fa-trash"></i>
+                <i
+                  className="delete_icon fa-solid fa-trash"
+                  onClick={() => deleteItem(item._id, item.type)}
+                ></i>
               </div>
             </div>
 
