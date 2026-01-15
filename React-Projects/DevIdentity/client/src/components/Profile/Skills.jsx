@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
 import "./Skills.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getCurrentUserProfile } from "../utils/actions/profile";
 import Spinner from "../Home/Spinner";
 
-const Skills = () => {
+const Skills = ({ skills }) => {
   const profileStore = useSelector((state) => state.profile);
   const dispatch = useDispatch();
-  const skills = profileStore.profile.skills || [];
+  // const skills = profileStore.profile.skills || [];
   const skillList = [
     // Frontend
     { name: "HTML", icon: "fa-brands fa-html5", color: "#E34F26" },
@@ -55,9 +53,6 @@ const Skills = () => {
     { name: "Git", icon: "fa-brands fa-github", color: "#000000" },
   ];
 
-  useEffect(() => {
-    dispatch(getCurrentUserProfile());
-  }, []);
   if (!profileStore.isProfileLoaded) {
     return <Spinner />;
   }

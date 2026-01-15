@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./ExperienceTimeLine.css";
-import {
-  deleteExperienceOrEducation,
-  getCurrentUserProfile,
-} from "../utils/actions/profile";
+import { deleteExperienceOrEducation } from "../utils/actions/profile";
 import Spinner from "../Home/Spinner";
 
-const ExperienceTimeline = () => {
+const ExperienceTimeline = ({ experience, education }) => {
   const profileStore = useSelector((state) => state.profile);
   const dispatch = useDispatch();
   const months = [
@@ -24,14 +20,10 @@ const ExperienceTimeline = () => {
     "Nov",
     "Dec",
   ];
-  useEffect(() => {
-    dispatch(getCurrentUserProfile());
-  }, []);
+
   if (!profileStore.isProfileLoaded) {
     return <Spinner />;
   }
-  const experience = profileStore.profile.experience || [];
-  const education = profileStore.profile.education || [];
 
   // 2. Combine them and add a 'type' flag to distinguish them in the UI
   const combinedData = [

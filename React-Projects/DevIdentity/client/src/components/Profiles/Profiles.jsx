@@ -16,7 +16,7 @@ const Profiles = () => {
       {!profileStore.isProfileLoaded ? (
         <Spinner />
       ) : (
-        <div>
+        <div className="profiles_container">
           {profileStore.profiles.length > 0 ? (
             profileStore.profiles.map((profile) => (
               <ProfileItem key={profile._id} profile={profile} />

@@ -1,15 +1,16 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUserProfile } from "../utils/actions/profile";
-import Profile from "./../Profile/Profile";
 import Spinner from "./Spinner";
 import { Link } from "react-router-dom";
 import "./Dashboard.css";
+import "../Profiles/Profile.css";
+import Skills from "../Profile/Skills";
+import ExperienceTimeline from "../Profile/ExperienceTimeLine";
 
 const Dashboard = () => {
-  const token = localStorage.getItem("token");
   const currentProfileStore = useSelector((state) => state.profile);
-  const user = useSelector((state) => state.user.user);
+  const { token, user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
     if (token) {
@@ -34,7 +35,28 @@ const Dashboard = () => {
           </Link>
         </Fragment>
       ) : (
-        <Profile profile={currentProfileStore.profile} />
+        <div>
+          <div className="profile_actions my-2">
+            <Link to="/edit-profile">
+              <i className="fas fa-user-circle  mr-1"></i>
+              Edit Profile
+            </Link>
+            <Link to="/add-experience">
+              <i className="fab fa-black-tie  mr-1"></i>
+              Add Experience
+            </Link>
+            <Link to="/add-education">
+              <i className="fas fa-graduation-cap  mr-1"></i>
+              Add Education
+            </Link>
+          </div>
+          <Skills skills={currentProfileStore.profile.skills} />
+          <ExperienceTimeline
+            experience={currentProfileStore.profile.experience}
+            education={currentProfileStore.profile.education}
+            token={token}
+          />
+        </div>
       )}
     </div>
   );

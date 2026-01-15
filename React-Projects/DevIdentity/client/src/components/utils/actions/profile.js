@@ -34,6 +34,7 @@ export const getCurrentUserProfile = () => async (dispatch) => {
 export const getAllProfiles = () => async (dispatch) => {
   try {
     const response = await axios.get("/api/profile/all");
+    dispatch(clearProfile());
     dispatch(setProfiles(response.data));
   } catch (error) {
     console.error("Error :: getAllProfiles() : ", error);
