@@ -1,11 +1,9 @@
 import "./Skills.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Spinner from "../Home/Spinner";
 
 const Skills = ({ skills }) => {
   const { profile, isProfileLoaded } = useSelector((state) => state.profile);
-  const dispatch = useDispatch();
-  // const skills = profileStore.profile.skills || [];
   const skillList = [
     // Frontend
     { name: "HTML", icon: "fa-brands fa-html5", color: "#E34F26" },

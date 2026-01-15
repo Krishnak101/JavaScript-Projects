@@ -48,6 +48,10 @@ export const getProfileById = (userId) => async (dispatch) => {
     dispatch(setProfile(response.data));
   } catch (error) {
     console.error("Error :: getProfileById() : ", error);
+    const err_msg = error.response.data.msg;
+    if (err_msg === "Profile not found") {
+      dispatch(setIsProfileLoaded(true));
+    }
     dispatch(setAlertWithTimeOut("Error fetching profile by ID", "danger"));
   }
 };
