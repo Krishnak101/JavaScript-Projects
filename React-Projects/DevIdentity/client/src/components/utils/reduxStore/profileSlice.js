@@ -7,11 +7,12 @@ const profileSlice = createSlice({
     profile: null,
     repos: [],
     isProfileLoaded: false,
+    isProfilesLoaded: false,
   },
   reducers: {
     setProfiles: (state, action) => {
       state.profiles = action.payload;
-      state.isProfileLoaded = true;
+      state.isProfilesLoaded = true;
     },
     setProfile: (state, action) => {
       state.profile = action.payload;
@@ -21,6 +22,10 @@ const profileSlice = createSlice({
       state.profile = null;
       state.isProfileLoaded = false;
       state.repos = [];
+    },
+    clearProfiles: (state, action) => {
+      state.profiles = [];
+      state.isProfilesLoaded = false;
     },
     setRepos: (state, action) => {
       state.repos = action.payload;
@@ -35,6 +40,7 @@ export const {
   setProfiles,
   setProfile,
   clearProfile,
+  clearProfiles,
   setRepos,
   setIsProfileLoaded,
 } = profileSlice.actions;

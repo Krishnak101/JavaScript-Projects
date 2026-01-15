@@ -41,7 +41,11 @@ const ExperienceTimeline = ({ experience, education }) => {
   };
 
   if (sortedTimeline.length === 0) {
-    return <p className="text-center text-gray-500">No history added yet.</p>;
+    return (
+      <p className="text-center text-gray-500">
+        No Experience or Education history found.
+      </p>
+    );
   }
 
   return (

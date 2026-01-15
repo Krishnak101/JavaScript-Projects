@@ -16,6 +16,7 @@ import AddExperience from "./components/Profile/AddExperience.jsx";
 import AddEducation from "./components/Profile/AddEducation.jsx";
 import ExperienceTimeline from "./components/Profile/ExperienceTimeLine.jsx";
 import Profiles from "./components/Profiles/Profiles.jsx";
+import Profile from "./components/Profiles/Profile.jsx";
 
 const App = () => {
   const alert = useSelector((state) => state.alert);
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profiles" element={<Profiles />} />
+          <Route path="/profile/user/:userId" element={<Profile />} />
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/create-profile" element={<CreateProfile />} />

@@ -13,7 +13,7 @@ const Profiles = () => {
   }, []);
   return (
     <Fragment>
-      {!profileStore.isProfileLoaded ? (
+      {!profileStore.isProfilesLoaded ? (
         <Spinner />
       ) : (
         <div className="profiles_top_container">

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../Home/Spinner";
 
 const Skills = ({ skills }) => {
-  const profileStore = useSelector((state) => state.profile);
+  const { profile, isProfileLoaded } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
   // const skills = profileStore.profile.skills || [];
   const skillList = [
@@ -53,8 +53,11 @@ const Skills = ({ skills }) => {
     { name: "Git", icon: "fa-brands fa-github", color: "#000000" },
   ];
 
-  if (!profileStore.isProfileLoaded) {
+  if (!isProfileLoaded) {
     return <Spinner />;
+  }
+  if (!profile) {
+    return <p className="text-center text-gray-500">No Skills added yet.</p>;
   }
 
   return (
