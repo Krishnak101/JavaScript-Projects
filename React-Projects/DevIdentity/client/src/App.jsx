@@ -3,7 +3,6 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Landing from "./components/Home/Landing";
 import Login from "./components/Login/Login";
-import Profile from "./components/Profile/Profile";
 import Dashboard from "./components/Home/Dashboard.jsx";
 import Alert from "./components/Home/Alert";
 import { useSelector, useDispatch } from "react-redux";
@@ -16,6 +15,7 @@ import CreateProfile from "./components/Profile/CreateProfile.jsx";
 import AddExperience from "./components/Profile/AddExperience.jsx";
 import AddEducation from "./components/Profile/AddEducation.jsx";
 import ExperienceTimeline from "./components/Profile/ExperienceTimeLine.jsx";
+import Profiles from "./components/Profiles/Profiles.jsx";
 
 const App = () => {
   const alert = useSelector((state) => state.alert);
@@ -32,7 +32,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profiles" element={<Profile />} />
+          <Route path="/profiles" element={<Profiles />} />
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/create-profile" element={<CreateProfile />} />

@@ -21,7 +21,7 @@ const AddExperience = () => {
     e.preventDefault();
     const errorMessage = validateDateRange(
       from.current.value,
-      to.current.value,
+      to?.current?.value,
       currentJobCheck
     );
     if (errorMessage) {

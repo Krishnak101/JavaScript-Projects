@@ -30,9 +30,10 @@ export const getCurrentUserProfile = () => async (dispatch) => {
     dispatch(setIsProfileLoaded(true));
   }
 };
+
 export const getAllProfiles = () => async (dispatch) => {
   try {
-    const response = await axios.get("/api/profile");
+    const response = await axios.get("/api/profile/all");
     dispatch(setProfiles(response.data));
   } catch (error) {
     console.error("Error :: getAllProfiles() : ", error);
@@ -121,5 +122,15 @@ export const deleteExperienceOrEducation = (id, type) => async (dispatch) => {
   } catch (error) {
     console.error("Error :: deleteExperienceOrEducation() : ", error);
     dispatch(setAlertWithTimeOut(error.response?.data?.msg, "danger"));
+  }
+};
+
+export const getGithubRepos = (username) => async (dispatch) => {
+  try {
+    const response = await axios.get("/api/profile/github/${username}");
+    dispatch(setRepos(response.data));
+  } catch (error) {
+    console.error("Error :: getGithubRepos() : ", error);
+    dispatch(setAlertWithTimeOut(error.response.statusText, "danger"));
   }
 };

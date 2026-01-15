@@ -1,0 +1,32 @@
+.profile_item_container {
+  margin: 50px 70px 20px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 60px 0px 10px;
+  background-color: rgb(74, 80, 88);
+}
+
+.profile_pic_container {
+  display: flex;
+  align-items: center;
+}
+
+.round_img {
+  padding: 20px;
+  height: 190px;
+  width: 190px;
+}
+.location_p {
+  margin-bottom: 25px;
+}
+.profile_link {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+.profile_link:hover {
+  background-color: #0056b3;
+  color: white;
+}

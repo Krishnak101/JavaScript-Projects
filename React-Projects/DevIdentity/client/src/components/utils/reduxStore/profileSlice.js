@@ -11,6 +11,7 @@ const profileSlice = createSlice({
   reducers: {
     setProfiles: (state, action) => {
       state.profiles = action.payload;
+      state.isProfileLoaded = true;
     },
     setProfile: (state, action) => {
       state.profile = action.payload;
