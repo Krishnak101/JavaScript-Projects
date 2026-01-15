@@ -16,14 +16,21 @@ const Profiles = () => {
       {!profileStore.isProfileLoaded ? (
         <Spinner />
       ) : (
-        <div className="profiles_container">
-          {profileStore.profiles.length > 0 ? (
-            profileStore.profiles.map((profile) => (
-              <ProfileItem key={profile._id} profile={profile} />
-            ))
-          ) : (
-            <h3> No Profiles Found...</h3>
-          )}
+        <div className="profiles_top_container">
+          <h1 className="text_header font-bold text-2xl">Developers</h1>
+          <p className="lead">
+            <i className="fab fa-connectdevelop"></i> Browse and Connect with
+            Developers
+          </p>
+          <div>
+            {profileStore.profiles.length > 0 ? (
+              profileStore.profiles.map((profile) => (
+                <ProfileItem key={profile._id} profile={profile} />
+              ))
+            ) : (
+              <h3> No Profiles Found...</h3>
+            )}
+          </div>
         </div>
       )}
     </Fragment>
