@@ -3,7 +3,7 @@ import { useLocation, Navigate } from "react-router-dom";
 import "./Login.css";
 import { checkValidData } from "../utils/validate.js";
 import BACKGROUND_IMAGE from "../../assets/bg-image.jpg";
-import { handleUserAuth, logoutUser } from "../utils/actions/auth.js";
+import { handleUserAuth } from "../utils/actions/auth.js";
 import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {

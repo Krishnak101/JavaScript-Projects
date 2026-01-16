@@ -51,6 +51,9 @@ export const handleUserAuth =
 
 export const logoutUser = () => (dispatch) => {
   dispatch(clearUserState());
+  dispatch(
+    setAlertWithTimeOut("You have successfully Logged out...", "success")
+  );
 };
 
 export const fetchUserData = () => async (dispatch) => {

@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./Navbar.css";
 import { useDispatch, useSelector } from "react-redux";
-import { clearUserState } from "../utils/reduxStore/userSlice";
+import { logoutUser } from "../utils/actions/auth";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const Navbar = () => {
           {userStore?.token ? (
             <button
               onClick={() => {
-                dispatch(clearUserState());
+                dispatch(logoutUser());
               }}
             >
               <i className="fas fa-sign-out-alt"></i>

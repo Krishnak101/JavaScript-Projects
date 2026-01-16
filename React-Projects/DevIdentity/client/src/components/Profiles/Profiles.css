@@ -35,3 +35,13 @@
   background-color: #0056b3;
   color: white;
 }
+
+.profile_link_red {
+  background-color: rgb(227, 23, 23);
+  margin: 20px;
+}
+.profile_link_red:hover {
+  background-color: #b30b0b;
+  color: white;
+}
+
