@@ -19,7 +19,13 @@ const Navbar = () => {
         <li className="copyrights">
           <small className="fa fa-copyright" aria-hidden="true" />
           <small>
-            <Link to="https://github.com/Krishnak101">Krishna</Link>
+            <Link
+              to="https://github.com/Krishnak101"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Krishna
+            </Link>
           </small>
         </li>
 

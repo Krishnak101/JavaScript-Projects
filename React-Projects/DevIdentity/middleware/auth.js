@@ -8,7 +8,7 @@ export default function (req, res, next) {
   if (!token) {
     return res
       .status(401)
-      .json({ msg: "Authorization denied as token is missing" });
+      .json({ msg: "Action unauthorized as token is missing" });
   }
   // Verify token
   try {

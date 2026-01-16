@@ -59,7 +59,7 @@ const Skills = ({ skills }) => {
   }
 
   return (
-    <section className="skills_top_container bg-[#1a1a1a]">
+    <section className="skills_top_container bg-gray-700/40 rounded-lg">
       <h2 className="text-white text-2xl font-bold mb-12 ml-4">Skills</h2>
       <br />
 

@@ -4,12 +4,12 @@
 }
 
 .profile_item_container {
-  margin: 30px 10px;
+  margin: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 60px 0px 10px;
-  background-color: rgb(74, 80, 88);
+  padding: 10px;
+  background-color: rgb(63, 68, 73);
 }
 
 .profile_pic_container {
@@ -18,9 +18,10 @@
 }
 
 .round_img {
-  padding: 20px;
-  height: 190px;
-  width: 190px;
+  height: 150px;
+  width: 150px;
+  margin-bottom: 5px;
+  padding: 4px;
 }
 .location_p {
   margin-bottom: 25px;
@@ -39,9 +40,25 @@
 .profile_link_red {
   background-color: rgb(227, 23, 23);
   margin: 20px;
+  margin-left: 50px;
 }
 .profile_link_red:hover {
   background-color: #b30b0b;
   color: white;
 }
 
+.profile_top {
+  padding: 20px 30px;
+  margin: 10px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile_top > p > span {
+  padding: 20px 0px;
+}
+
+.profile_info {
+  padding-left: 10px;
+}

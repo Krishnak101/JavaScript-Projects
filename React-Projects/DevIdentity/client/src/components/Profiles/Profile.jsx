@@ -34,7 +34,10 @@ const Profile = ({}) => {
           Edit Profile
         </Link>
       )}
-      <ProfileBio />
+      <ProfileBio profile={profile} />
+      <div className="profile_top">
+        <h1>{profile.bio}</h1>
+      </div>
       <Skills skills={profile.skills} />
       <ExperienceTimeline
         experience={profile?.experience}
