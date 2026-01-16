@@ -31,7 +31,7 @@ const Navbar = () => {
 
         {userStore?.token && (
           <li>
-            <NavLink to="/dashboard" className="flex flex-row items-center">
+            <NavLink to="/dashboard" className="flex flex-row my-2 copyrights">
               <i className="fa-sharp fa-solid fa-user"></i>
               <span className="hidden md:block">Dashboard</span>
             </NavLink>
