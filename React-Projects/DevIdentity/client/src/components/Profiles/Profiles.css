@@ -33,17 +33,18 @@
   border-radius: 5px;
 }
 .profile_link:hover {
-  background-color: #0056b3;
+  opacity: 0.8;
   color: white;
 }
 
 .profile_link_red {
-  background-color: rgb(227, 23, 23);
+  background-color: rgb(201, 8, 8);
   margin: 20px;
   margin-left: 50px;
 }
 .profile_link_red:hover {
-  background-color: #b30b0b;
+  opacity: 0.8;
+  background-color: rgb(201, 8, 8);
   color: white;
 }
 

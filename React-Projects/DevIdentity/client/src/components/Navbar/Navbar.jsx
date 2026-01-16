@@ -10,9 +10,9 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <h1>
-        <Link to="/">
+        <Link to="/" className="flex flex-row items-center">
           <i className="fas fa-code "></i>{" "}
-          <span className="hide-sm">DevIdentity</span>
+          <span className="hidden md:block">&nbsp;DevIdentity</span>
         </Link>
       </h1>
       <ul>
@@ -31,9 +31,9 @@ const Navbar = () => {
 
         {userStore?.token && (
           <li>
-            <NavLink to="/dashboard">
+            <NavLink to="/dashboard" className="flex flex-row items-center">
               <i className="fa-sharp fa-solid fa-user"></i>
-              <span className="hide-sm">Dashboard</span>
+              <span className="hidden md:block">Dashboard</span>
             </NavLink>
           </li>
         )}
@@ -47,12 +47,13 @@ const Navbar = () => {
         <li>
           {userStore?.token ? (
             <button
+              className="flex flex-row items-center"
               onClick={() => {
                 dispatch(logoutUser());
               }}
             >
               <i className="fas fa-sign-out-alt"></i>
-              <span className="hide-sm">Logout</span>
+              <span className="hidden md:block">Logout</span>
             </button>
           ) : (
             <NavLink to="/login" state={{ isLogInForm: true }}>
