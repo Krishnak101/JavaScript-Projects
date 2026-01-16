@@ -6,6 +6,7 @@ import Skills from "../Profile/Skills";
 import { getProfileById } from "../utils/actions/profile";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../Home/Spinner";
+import ProfileBio from "./ProfileBio";
 
 const Profile = ({}) => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const Profile = ({}) => {
           Edit Profile
         </Link>
       )}
-      <h1>Hello {profile?.user.name}</h1>
+      <ProfileBio />
       <Skills skills={profile.skills} />
       <ExperienceTimeline
         experience={profile?.experience}

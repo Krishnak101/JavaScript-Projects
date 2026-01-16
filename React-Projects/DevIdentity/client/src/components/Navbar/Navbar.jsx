@@ -16,6 +16,13 @@ const Navbar = () => {
         </Link>
       </h1>
       <ul>
+        <li className="copyrights">
+          <small className="fa fa-copyright" aria-hidden="true" />
+          <small>
+            <Link to="https://github.com/Krishnak101">Krishna</Link>
+          </small>
+        </li>
+
         {userStore?.token && (
           <li>
             <NavLink to="/dashboard">

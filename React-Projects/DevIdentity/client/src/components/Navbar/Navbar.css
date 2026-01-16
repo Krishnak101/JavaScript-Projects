@@ -58,3 +58,17 @@ a:hover {
   opacity: 0.8;
   font-weight: bold;
 }
+
+.copyrights {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  padding: 13px 7px 0px 10px;
+}
+
+.copyrights:hover > small > a {
+  color: rgb(141, 222, 97);
+  font-weight: bold;
+}
