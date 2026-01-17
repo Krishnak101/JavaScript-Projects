@@ -41,10 +41,10 @@ const ProfileGithub = ({ github_username }) => {
                   <li className="badge badge-primary ">
                     Stars: {repo.stargazers_count}
                   </li>
-                  <li className="badge badge-dark">
+                  <li className="badge badge-light">
                     Watchers: {repo.watchers_count}
                   </li>
-                  <li className="badge badge-light">
+                  <li className="badge badge-dark">
                     Forks: {repo.forks_count}
                   </li>
                 </ul>

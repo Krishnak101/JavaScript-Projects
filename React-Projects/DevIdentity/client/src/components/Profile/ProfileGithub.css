@@ -14,7 +14,7 @@
 
 .badge {
   font-size: small;
-  padding: 4px;
+  padding: 2px;
   margin: 3px;
 }
 
@@ -23,10 +23,10 @@
 }
 
 .badge-dark {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+  background-color: chocolate;
 }
 
 .badge-light {
-  background-color: chocolate;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
