@@ -7,6 +7,7 @@ import { getProfileById } from "../utils/actions/profile";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../Home/Spinner";
 import ProfileBio from "./ProfileBio";
+import ProfileGithub from "../Profile/ProfileGithub";
 
 const Profile = ({}) => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const Profile = ({}) => {
         experience={profile?.experience}
         education={profile?.education}
       />
+      <ProfileGithub github_username={profile?.github_username} />
     </div>
   );
 };

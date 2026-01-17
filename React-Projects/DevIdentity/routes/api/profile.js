@@ -14,7 +14,7 @@ router.get("/me", auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user_id }).populate(
       "user",
-      ["name", "avatar"]
+      ["name", "avatar"],
     );
     if (!profile) {
       return res.status(400).json({ msg: "There is no profile for this user" });
@@ -87,7 +87,7 @@ router.post(
         profile = await Profile.findOneAndUpdate(
           { user: req.user_id },
           { $set: profileFields },
-          { new: true }
+          { new: true },
         );
         return res.json({ msg: "Profile Updated", Profile: profile });
       } else {
@@ -100,7 +100,7 @@ router.post(
       console.error(err);
       res.status(500).send("Server Error");
     }
-  }
+  },
 );
 
 // @route    GET api/profile/all
@@ -193,7 +193,7 @@ router.put(
       console.error(err);
       res.status(500).send("Server Error");
     }
-  }
+  },
 );
 
 // @route    DELETE api/profile/experience/:exp_id
@@ -259,7 +259,7 @@ router.put(
       console.error(err);
       res.status(500).send("Server Error");
     }
-  }
+  },
 );
 
 // @route    DELETE api/profile/education/:education_id
@@ -292,11 +292,12 @@ router.get("/github/:username", async (req, res) => {
     const uri = encodeURI(
       `https://api.github.com/users/${
         req.params.username
-      }/repos?per_page=5&sort=created:asc&client_id=${config.get(
-        "githubClientId"
-      )}&client_secret=${config.get("githubClientSecret")}`
+      }/repos?per_page=5&sort=created:asc`,
     );
-    const headers = { "user-agent": "node.js" };
+    const headers = {
+      "user-agent": "node.js",
+      Authorization: `token ${config.get("gh_token")}`,
+    };
     const githubResponse = await axios.get(uri, { headers });
     return res.json(githubResponse.data);
   } catch (err) {

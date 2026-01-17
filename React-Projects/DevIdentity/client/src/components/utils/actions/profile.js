@@ -18,14 +18,14 @@ export const getCurrentUserProfile = () => async (dispatch) => {
   try {
     console.log(
       "getCurrentUserProfile() :: Auth-Token in headers : ",
-      axios.defaults.headers.common["x-auth-token"]
+      axios.defaults.headers.common["x-auth-token"],
     );
     const response = await axios.get("/api/profile/me");
     dispatch(setProfile(response.data));
   } catch (error) {
     console.error(
       "Error :: getCurrentUserProfile() : ",
-      error.response.data.msg
+      error.response.data.msg,
     );
     dispatch(setIsProfileLoaded(true));
   }
@@ -68,8 +68,8 @@ export const setCurrentUserProfile =
           isEditPage
             ? "Profile Updated Successfully"
             : "Profile Created Successfully",
-          "success"
-        )
+          "success",
+        ),
       );
       navigate("/dashboard");
     } catch (error) {
@@ -121,8 +121,8 @@ export const deleteExperienceOrEducation = (id, type) => async (dispatch) => {
     dispatch(
       setAlertWithTimeOut(
         `${type.toUpperCase()} Removed Successfully`,
-        "success"
-      )
+        "success",
+      ),
     );
   } catch (error) {
     console.error("Error :: deleteExperienceOrEducation() : ", error);
@@ -132,7 +132,7 @@ export const deleteExperienceOrEducation = (id, type) => async (dispatch) => {
 
 export const getGithubRepos = (username) => async (dispatch) => {
   try {
-    const response = await axios.get("/api/profile/github/${username}");
+    const response = await axios.get(`/api/profile/github/${username}`);
     dispatch(setRepos(response.data));
   } catch (error) {
     console.error("Error :: getGithubRepos() : ", error);
