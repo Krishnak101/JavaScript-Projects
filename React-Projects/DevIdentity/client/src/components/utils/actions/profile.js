@@ -16,10 +16,6 @@ const config = {
 
 export const getCurrentUserProfile = () => async (dispatch) => {
   try {
-    console.log(
-      "getCurrentUserProfile() :: Auth-Token in headers : ",
-      axios.defaults.headers.common["x-auth-token"],
-    );
     const response = await axios.get("/api/profile/me");
     dispatch(setProfile(response.data));
   } catch (error) {

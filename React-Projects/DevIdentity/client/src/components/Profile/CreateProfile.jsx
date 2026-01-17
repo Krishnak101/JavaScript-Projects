@@ -53,11 +53,6 @@ const CreateProfile = ({ isEditPage }) => {
     return navigate("/dashboard");
   };
   useEffect(() => {
-    console.log(
-      "CreateProfile :: useEffect :: currentProfileStore : ",
-      currentProfileStore,
-    );
-
     if (!currentProfileStore.isProfileLoaded) {
       dispatch(getCurrentUserProfile());
     } else {
@@ -92,8 +87,6 @@ const CreateProfile = ({ isEditPage }) => {
           linkedinRef.current.value = social.linkedin || "";
           youtubeRef.current.value = social.youtube || "";
         }
-
-        console.log("CreateProfile :: useEffect :: profileData : ", social);
       }
     }
   }, [showSocials, currentProfileStore.isProfileLoaded]);
