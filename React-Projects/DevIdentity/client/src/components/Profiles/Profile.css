@@ -1,3 +1,6 @@
+.profile_actions {
+  margin-bottom: 10px;
+}
 .profile_actions > a {
   margin-top: 20px;
   margin-left: 15px;
@@ -10,6 +13,6 @@
   background-color: #0056b3;
   color: white;
 }
-.profile_container{
+.profile_container {
   margin: 15px;
 }

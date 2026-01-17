@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 7px 0px;
+  border-bottom: 1px solid gray;
 }
 
 .repo_text_card {

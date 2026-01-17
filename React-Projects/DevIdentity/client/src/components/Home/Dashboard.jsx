@@ -7,6 +7,7 @@ import "./Dashboard.css";
 import "../Profiles/Profile.css";
 import Skills from "../Profile/Skills";
 import ExperienceTimeline from "../Profile/ExperienceTimeLine";
+import ProfileGithub from "../Profile/ProfileGithub";
 
 const Dashboard = () => {
   const currentProfileStore = useSelector((state) => state.profile);
@@ -36,7 +37,7 @@ const Dashboard = () => {
         </Fragment>
       ) : (
         <div>
-          <div className="profile_actions my-2">
+          <div className="profile_actions">
             <Link to="/edit-profile">
               <i className="fas fa-user-circle  mr-1"></i>
               Edit Profile
@@ -55,6 +56,9 @@ const Dashboard = () => {
             experience={currentProfileStore.profile.experience}
             education={currentProfileStore.profile.education}
             token={token}
+          />
+          <ProfileGithub
+            github_username={currentProfileStore.profile?.github_username}
           />
         </div>
       )}

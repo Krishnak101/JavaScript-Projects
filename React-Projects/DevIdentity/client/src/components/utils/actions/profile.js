@@ -27,6 +27,7 @@ export const getCurrentUserProfile = () => async (dispatch) => {
       "Error :: getCurrentUserProfile() : ",
       error.response.data.msg,
     );
+    dispatch(clearProfile());
     dispatch(setIsProfileLoaded(true));
   }
 };
