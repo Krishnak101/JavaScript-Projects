@@ -1,0 +1,31 @@
+.repo_text_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 7px 0px;
+}
+
+.repo_text_card {
+  padding: 5px;
+  margin: 3px;
+}
+
+.badge {
+  font-size: small;
+  padding: 4px;
+  margin: 3px;
+}
+
+.badge-primary {
+  background-color: rgb(78, 159, 2);
+}
+
+.badge-dark {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.badge-light {
+  background-color: chocolate;
+}

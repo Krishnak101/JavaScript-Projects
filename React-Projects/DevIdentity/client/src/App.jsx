@@ -24,9 +24,9 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchUserData());
   }, [dispatch]);
-  // @ToDo Projects Section To Display our Projects
-  // @ToDo Upload Profile Pic Feature
   // @ToDo Pagination for View Profiles Section
+  // @ToDo Upload Profile Pic Feature
+  // @ToDo Projects Section To Display our Projects
   return (
     <BrowserRouter>
       <Fragment>

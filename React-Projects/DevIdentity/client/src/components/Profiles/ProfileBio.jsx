@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const ProfileBio = ({
   profile: {
     role,
-    bio,
     company,
     location,
     website,
@@ -13,7 +12,7 @@ const ProfileBio = ({
   },
 }) => {
   return (
-    <div className="bg-gray-500/40 backdrop-blur-md border border-gray-800 rounded-lg p-10 text-center shadow-2xl profile_top">
+    <div className="bg-gray-500/40 backdrop-blur-md border-2 border-gray-500/40 rounded-lg p-10 text-center shadow-2xl profile_top">
       <img
         className="rounded-full round_img border-4 border-green-400 mx-auto"
         src={avatar}

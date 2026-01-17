@@ -59,7 +59,7 @@ const Skills = ({ skills }) => {
   }
 
   return (
-    <section className="skills_top_container bg-gray-700/40 rounded-lg">
+    <section className="skills_top_container bg-gray-700/40 rounded-lg border-2 border-gray-500/40">
       <h2 className="text-white text-2xl font-bold mb-12 ml-4">Skills</h2>
       <br />
 
@@ -67,7 +67,7 @@ const Skills = ({ skills }) => {
         {skills.map((skillName, index) => {
           // Search for the skill metadata in our local skillList array
           const skillData = skillList.find(
-            (s) => s.name.toLowerCase() === skillName.toLowerCase()
+            (s) => s.name.toLowerCase() === skillName.toLowerCase(),
           );
 
           return (

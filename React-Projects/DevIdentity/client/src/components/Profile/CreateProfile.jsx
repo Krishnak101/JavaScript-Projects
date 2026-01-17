@@ -55,39 +55,46 @@ const CreateProfile = ({ isEditPage }) => {
   useEffect(() => {
     console.log(
       "CreateProfile :: useEffect :: currentProfileStore : ",
-      currentProfileStore
+      currentProfileStore,
     );
 
     if (!currentProfileStore.isProfileLoaded) {
       dispatch(getCurrentUserProfile());
     } else {
       //populate the form fields
-      if (currentProfileStore.profile.social.length != 0 && !showSocials) {
+      if (
+        isEditPage &&
+        currentProfileStore.profile?.social?.length != 0 &&
+        !showSocials
+      ) {
         setShowSocials(true);
       }
-      const {
-        role,
-        company,
-        website,
-        location,
-        skills,
-        github_username,
-        bio,
-        social,
-      } = currentProfileStore.profile;
-      roleRef.current.value = role || "";
-      companyRef.current.value = company || "";
-      websiteRef.current.value = website || "";
-      locationRef.current.value = location || "";
-      skillsRef.current.value = skills.join(",") || "";
-      githubUsernameRef.current.value = github_username || "";
-      bioRef.current.value = bio || "";
-      if (showSocials) {
-        twitterRef.current.value = social.twitter || "";
-        linkedinRef.current.value = social.linkedin || "";
-        youtubeRef.current.value = social.youtube || "";
+      if (isEditPage) {
+        const {
+          role,
+          company,
+          website,
+          location,
+          skills,
+          github_username,
+          bio,
+          social,
+        } = currentProfileStore?.profile;
+        roleRef.current.value = role || "";
+        companyRef.current.value = company || "";
+        websiteRef.current.value = website || "";
+        locationRef.current.value = location || "";
+        skillsRef.current.value = skills.join(",") || "";
+        githubUsernameRef.current.value = github_username || "";
+        bioRef.current.value = bio || "";
+        if (showSocials) {
+          twitterRef.current.value = social.twitter || "";
+          linkedinRef.current.value = social.linkedin || "";
+          youtubeRef.current.value = social.youtube || "";
+        }
+
+        console.log("CreateProfile :: useEffect :: profileData : ", social);
       }
-      console.log("CreateProfile :: useEffect :: profileData : ", social);
     }
   }, [showSocials, currentProfileStore.isProfileLoaded]);
 
@@ -178,7 +185,7 @@ const CreateProfile = ({ isEditPage }) => {
             <button
               type="button"
               onClick={toggleSocials}
-              className="bg-red-600 rounded hover:bg-red-700 transition show_socials_btn"
+              className="bg-gray-500 rounded hover:bg-gray-700 transition show_socials_btn"
             >
               &nbsp;&nbsp; {showSocials ? "Remove" : "Include"} Social Network
               Links&nbsp;&nbsp;

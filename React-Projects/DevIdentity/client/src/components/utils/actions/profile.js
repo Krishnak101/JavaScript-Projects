@@ -136,6 +136,8 @@ export const getGithubRepos = (username) => async (dispatch) => {
     dispatch(setRepos(response.data));
   } catch (error) {
     console.error("Error :: getGithubRepos() : ", error);
-    dispatch(setAlertWithTimeOut(error.response.statusText, "danger"));
+    dispatch(
+      setAlertWithTimeOut(`GitHub: ${error.response.statusText}`, "danger"),
+    );
   }
 };
