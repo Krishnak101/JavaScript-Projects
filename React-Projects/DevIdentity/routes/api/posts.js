@@ -23,7 +23,7 @@ router.post(
         text: req.body.text,
         name: user.name,
         avatar: user.avatar,
-        user: req.user_id,
+        user_id: req.user_id,
       });
       const post = await newPost.save();
       res.json(post);
@@ -31,7 +31,7 @@ router.post(
       console.error(err);
       res.status(500).send("Server Error");
     }
-  }
+  },
 );
 
 // @route    GET api/posts
@@ -180,7 +180,7 @@ router.post(
       }
       res.status(500).send("Server Error");
     }
-  }
+  },
 );
 
 // @route    DELETE api/posts/comment/:post_id/:comment_id

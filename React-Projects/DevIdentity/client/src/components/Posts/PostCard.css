@@ -1,0 +1,40 @@
+.post_card_container {
+  color: black;
+  margin: 20px 50px;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+.round_image {
+  height: 60px;
+  width: 60px;
+  margin-bottom: 3px;
+  padding: 2px;
+  margin-right: 26px;
+}
+
+.post_date {
+  font-size: smaller;
+  color: gray;
+  margin-top: 5px;
+}
+
+.like_btn {
+  margin: 2px 7px 0px 3px;
+  padding: 3px 5px;
+  background-color: rgb(223, 218, 218);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.like_btn:hover {
+  opacity: 0.7;
+}
+
+.btn_primary {
+  background-color: rgb(16, 228, 151);
+  margin: 3px 7px 0px 3px;
+  padding: 3px 5px;
+  border-radius: 4px;
+}

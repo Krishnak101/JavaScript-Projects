@@ -6,11 +6,11 @@ import postReducer from "./postSlice.js";
 
 const store = configureStore({
   reducer: {
-    // Add your reducers here
+    // Add all the reducers here
     user: userReducer,
     alert: alertReducer,
     profile: profileReducer,
-    posts: postReducer,
+    postReducer: postReducer,
   },
 });
 
