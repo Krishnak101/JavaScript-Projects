@@ -30,18 +30,23 @@ const Navbar = () => {
         </li>
 
         {userStore?.token && (
-          <li>
-            <NavLink to="/dashboard" className="flex flex-row my-2 copyrights">
-              <i className="fa-sharp fa-solid fa-user"></i>
-              <span className="hidden md:block">Dashboard</span>
-            </NavLink>
-          </li>
+          <>
+            <li>
+              <NavLink
+                to="/dashboard"
+                className="flex flex-row my-2 copyrights"
+              >
+                <i className="fa-sharp fa-solid fa-user"></i>
+                <span className="hidden md:block">Dashboard</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/posts">Posts</NavLink>
+            </li>
+          </>
         )}
         <li>
           <NavLink to="/profiles">Developers</NavLink>
-        </li>
-        <li>
-          <NavLink to="/posts">Posts</NavLink>
         </li>
 
         <li>
