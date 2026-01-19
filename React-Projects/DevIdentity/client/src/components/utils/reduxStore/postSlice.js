@@ -25,10 +25,17 @@ const postSlice = createSlice({
       state.error = {};
       state.loading = false;
     },
+    updateLikes: (state, action) => {
+      const index = state.posts.findIndex( post => post._id === action.payload.postId);
+      if(index !==-1){
+        state.posts[index].likes = action.payload.likes;
+      }
+      state.loading = false;
+    },
   },
 });
 
-export const { getPosts, setPost, setPostError, clearPostError } =
+export const { getPosts, setPost, setPostError, clearPostError, updateLikes } =
   postSlice.actions;
 
 export default postSlice.reducer;

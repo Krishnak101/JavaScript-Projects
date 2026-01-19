@@ -28,7 +28,6 @@ export const handleUserAuth =
           });
       const response = await axios.post(apiEndpoint, body, config);
 
-      console.log("handleUserAuth() :: Response Data: ", response);
       const token = response.data.token;
       // Set token in axios headers for future requests
       setAuthToken(token);

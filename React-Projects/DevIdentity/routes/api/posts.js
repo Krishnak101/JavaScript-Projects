@@ -99,7 +99,7 @@ router.delete("/:post_id", auth, async (req, res) => {
 router.put("/like/:post_id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.post_id);
-
+console.log("server side req: ", req);
     if (
       post.likes.filter((like) => like.user.toString() === req.user_id).length >
       0
