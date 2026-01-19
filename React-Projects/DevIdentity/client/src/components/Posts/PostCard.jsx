@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./PostCard.css";
 import { useDispatch } from "react-redux";
-import { likeOrUnlikePost } from "../utils/actions/post";
+import { likeOrUnlikePost, delete_Post } from "../utils/actions/post";
 const PostCard = ({
   auth,
   postItem: { _id, text, name, avatar, user_id, likes, comments, date },
@@ -11,6 +11,10 @@ const PostCard = ({
   const addLikeOrRemove = (type, id) => {
 dispatch(likeOrUnlikePost(type,id));
   };
+
+  const deletePost = (id) => {
+    dispatch(delete_Post(id));
+  }
   return (
     <div className="post_card_container bg-white p-1 my-1">
       <div>

@@ -75,7 +75,7 @@ router.delete("/:post_id", auth, async (req, res) => {
   try {
     const post = await Post.findOneAndDelete({
       _id: req.params.post_id,
-      user: req.user_id,
+      user_id: req.user_id,
     });
 
     if (!post) {
@@ -99,14 +99,13 @@ router.delete("/:post_id", auth, async (req, res) => {
 router.put("/like/:post_id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.post_id);
-console.log("server side req: ", req);
     if (
-      post.likes.filter((like) => like.user.toString() === req.user_id).length >
+      post.likes.filter((like) => like.user_id.toString() === req.user_id).length >
       0
     ) {
       return res.status(400).json({ msg: "Post already liked" });
     }
-    post.likes.unshift({ user: req.user_id });
+    post.likes.unshift({ user_id: req.user_id });
     await post.save();
     res.json(post.likes);
   } catch (err) {
@@ -126,13 +125,13 @@ router.put("/unlike/:post_id", auth, async (req, res) => {
     const post = await Post.findById(req.params.post_id);
 
     if (
-      post.likes.filter((like) => like.user.toString() === req.user_id)
+      post.likes.filter((like) => like.user_id.toString() === req.user_id)
         .length === 0
     ) {
       return res.status(400).json({ msg: "Post has not yet been liked" });
     }
     const removeIndex = post.likes
-      .map((like) => like.user.toString())
+      .map((like) => like.user_id.toString())
       .indexOf(req.user_id);
     post.likes.splice(removeIndex, 1);
     await post.save();
@@ -167,7 +166,7 @@ router.post(
         text: req.body.text,
         name: user.name,
         avatar: user.avatar,
-        user: req.user_id,
+        user_id: req.user_id,
       };
 
       post.comments.unshift(newComment);
@@ -200,8 +199,8 @@ router.delete("/comment/:post_id/:comment_id", auth, async (req, res) => {
     }
     // only logged in user can delete their comment or post owner can delete any comment on their post
     if (
-      post.comments[removeIndex].user.toString() !== req.user_id ||
-      post.user.toString() !== req.user_id
+      post.comments[removeIndex].user_id.toString() !== req.user_id ||
+      post.user_id.toString() !== req.user_id
     ) {
       return res.status(401).json({ msg: "User not authorized" });
     }

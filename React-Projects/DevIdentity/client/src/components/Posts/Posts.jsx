@@ -14,7 +14,7 @@ const Posts = () => {
   useEffect(() => {
     dispatch(getAllPosts());
     dispatch(fetchUserData());
-  }, []);
+  }, [posts]);
 
   if (loading) {
     return <Spinner />;
