@@ -62,7 +62,7 @@ export const fetchUserData = () => async (dispatch) => {
       dispatch(setUserData(response.data));
     } catch (error) {
       console.error("Error:: fetchUserData() : ", error);
-      if (error.response.data.error === "jwt expired") {
+      if (error?.response?.data?.error === "jwt expired") {
         dispatch(logoutUser());
         dispatch(
           setAlertWithTimeOut(

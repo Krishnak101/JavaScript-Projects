@@ -13,11 +13,9 @@ export const getAllPosts = () => async (dispatch) => {
     const response = await axios.get("/api/posts");
     dispatch(getPosts(response.data));
   } catch (error) {
+    console.error("Error:: getAllPosts() : ",error);
     dispatch(
-      setPostError({
-        msg: error.response.statusText,
-        status: error.response.status,
-      }),
+      setAlertWithTimeOut(error?.response?.data?.msg, "danger"),
     );
   }
 };
@@ -44,7 +42,7 @@ export const delete_Post = ( postId) => async (dispatch) => {
   } catch (error) {
     console.error("Error:: likeOrUnlikePost() : ",error.response);
     dispatch(
-      setAlertWithTimeOut(error.response.data.msg, "danger"),
+      setAlertWithTimeOut(error.response.data?.msg, "danger"),
     );
   }
 };

@@ -89,7 +89,7 @@ router.delete("/:post_id", auth, async (req, res) => {
     if (err.kind === "ObjectId") {
       return res.status(404).json({ msg: "Post not found" });
     }
-    res.status(500).send("Server Error");
+    res.status(500).json({ msg: "Server Error" });
   }
 });
 
@@ -113,7 +113,7 @@ router.put("/like/:post_id", auth, async (req, res) => {
     if (err.kind === "ObjectId") {
       return res.status(404).json({ msg: "Post not found" });
     }
-    res.status(500).send("Server Error");
+    res.status(500).json({ msg: "Server Error" });
   }
 });
 
@@ -141,7 +141,7 @@ router.put("/unlike/:post_id", auth, async (req, res) => {
     if (err.kind === "ObjectId") {
       return res.status(404).json({ msg: "Post not found" });
     }
-    res.status(500).send("Server Error");
+    res.status(500).json({ msg: "Server Error" });
   }
 });
 
@@ -177,7 +177,7 @@ router.post(
       if (err.kind === "ObjectId") {
         return res.status(404).json({ msg: "Post not found" });
       }
-      res.status(500).send("Server Error");
+      res.status(500).json({ msg: "Server Error" });
     }
   },
 );
