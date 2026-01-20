@@ -38,14 +38,14 @@ const ProfileGithub = ({ github_username }) => {
               </div>
               <div>
                 <ul>
-                  <li className="badge badge-primary ">
-                    Stars: {repo.stargazers_count}
+                  <li className="badge badge-primary bg-amber-500/10 text-amber-500 border border-amber-500/20">
+                    <i className="fas fa-star"/>: {repo.stargazers_count}
                   </li>
-                  <li className="badge badge-light">
-                    Watchers: {repo.watchers_count}
+                  <li className="badge badge-light bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                    <i className="fas fa-eye"/>: {repo.watchers_count}
                   </li>
-                  <li className="badge badge-dark">
-                    Forks: {repo.forks_count}
+                  <li className="badge badge-dark bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <i className="fas fa-code-branch"/>: {repo.forks_count}
                   </li>
                 </ul>
               </div>

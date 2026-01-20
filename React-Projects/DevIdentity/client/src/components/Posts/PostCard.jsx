@@ -17,7 +17,7 @@ const PostCard = ({
       <div>
         <Link to={`/profile/user/${user_id}`}>
           <img
-            className="round_image rounded rounded-full"
+            className="round_image rounded rounded-full hover:shadow-[0_0_10px_rgba(145,145,178,0.6)]"
             src={avatar}
             alt=""
           />
@@ -30,18 +30,18 @@ const PostCard = ({
           <i className="post_date">Posted on {date.substring(0, 10)}</i>
         </p>
 
-        <button onClick={() => addLikeOrRemove("like",_id)} type="button" className="like_btn">
+        <button onClick={() => addLikeOrRemove("like",_id)} type="button" className="like_btn hover:shadow-[0_0_10px_rgba(145,145,178,0.6)]">
           <i className="fas fa-thumbs-up" />{" "}
           <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
         </button>
         <button
           onClick={() => addLikeOrRemove("unlike",_id)}
           type="button"
-          className="like_btn"
+          className="like_btn hover:shadow-[0_0_10px_rgba(145,145,178,0.6)]"
         >
           <i className="fas fa-thumbs-down" />
         </button>
-        <Link to={`/posts/${_id}`} className="btn btn_primary">
+        <Link to={`/posts/${_id}`} className="btn btn_primary bg-cyan-500 hover:shadow-[0_0_10px_rgba(8,145,178,0.7)]">
           Comments:{" "}
           {comments.length > 0 && (
             <span className="comment-count">{comments.length}</span>
@@ -51,7 +51,7 @@ const PostCard = ({
           <button
             onClick={() => dispatch(delete_Post(_id))}
             type="button"
-            className="btn btn_danger"
+            className="btn btn_danger bg-rose-500 hover:bg-rose-400 hover:shadow-[0_0_10px_rgba(230,145,178,0.7)]"
           >
             <i className="fas fa-times" />
           </button>
