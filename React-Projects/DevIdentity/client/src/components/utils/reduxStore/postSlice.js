@@ -33,13 +33,17 @@ const postSlice = createSlice({
       state.loading = false;
     },
     deletePost: (state, action) => {
-      state.posts = state.posts.filter( post => post._id !== action.payload.postId);
+      state.posts = state.posts.filter( post => post._id !== action.payload);
+      state.loading = false;
+    },
+    addPost: (state, action) => {
+      state.posts.unshift(action.payload);
       state.loading = false;
     },
   },
 });
 
-export const { getPosts, setPost, setPostError, clearPostError, updateLikes, deletePost } =
+export const { getPosts, setPost, setPostError, clearPostError, updateLikes, deletePost, addPost } =
   postSlice.actions;
 
 export default postSlice.reducer;

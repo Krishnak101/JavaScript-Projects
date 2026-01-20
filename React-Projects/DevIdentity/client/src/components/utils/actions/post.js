@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getPosts, setPost, setPostError, updateLikes, deletePost } from "../reduxStore/postSlice";
+import { getPosts, setPost, setPostError, updateLikes, deletePost, addPost } from "../reduxStore/postSlice";
 import { setAlertWithTimeOut } from "./alerts";
 
 const config = {
@@ -46,3 +46,17 @@ export const delete_Post = ( postId) => async (dispatch) => {
     );
   }
 };
+
+export const add_Post = (formData) => async (dispatch) => {
+    try {
+      const body = JSON.stringify(formData);
+      const response = await axios.post("/api/posts", body, config);
+
+      dispatch(addPost(response.data));
+      dispatch(setAlertWithTimeOut("Post Created Successfully", "success"));
+    } catch (error) {
+
+      console.error("Error :: add_Post() : ", error);
+      dispatch(setAlertWithTimeOut(error.response?.data?.msg, "danger"));
+    }
+  };

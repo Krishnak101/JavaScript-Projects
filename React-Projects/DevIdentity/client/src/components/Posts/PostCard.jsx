@@ -9,12 +9,9 @@ const PostCard = ({
 }) => {
   const dispatch = useDispatch();
   const addLikeOrRemove = (type, id) => {
-dispatch(likeOrUnlikePost(type,id));
+      dispatch(likeOrUnlikePost(type,id));
   };
 
-  const deletePost = (id) => {
-    dispatch(delete_Post(id));
-  }
   return (
     <div className="post_card_container bg-white p-1 my-1">
       <div>
@@ -52,7 +49,7 @@ dispatch(likeOrUnlikePost(type,id));
         </Link>
         {auth.token && user_id === auth.user?._id && (
           <button
-            onClick={() => deletePost(_id)}
+            onClick={() => dispatch(delete_Post(_id))}
             type="button"
             className="btn btn_danger"
           >
