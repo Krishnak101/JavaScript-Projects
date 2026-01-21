@@ -11,7 +11,7 @@ const ProfileItem = ({
   },
 }) => {
   return (
-    <div className="profile_item_container bg-light w-2/3">
+    <div className="profile_item_container bg-light w-5/6">
       <div className="profile_pic_container">
         <img src={avatar} alt="" className="round_img rounded rounded-full" />
         <div className="profile_info">

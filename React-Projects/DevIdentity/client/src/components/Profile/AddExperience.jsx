@@ -43,7 +43,7 @@ const AddExperience = () => {
     return navigate("/dashboard");
   };
   return (
-    <div className="register_form_container z-5 absolute bg-black   w-1/3 top-1/5 relative  left-[30%]">
+    <div className="register_form_container z-5 absolute bg-black  w-1/3 top-1/5 relative  left-[30%]">
       <h1 className="font-bold text-3xl">Add Your Experience</h1>
       <form
         className="register_form"

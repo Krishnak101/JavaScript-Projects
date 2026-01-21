@@ -3,13 +3,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 7px 0px;
+  margin: 4px 0px;
   border-bottom: 1px solid gray;
 }
 
 .repo_text_card {
   padding: 5px;
-  margin: 3px;
+  margin: 3px 1px;
 }
 
 .badge {

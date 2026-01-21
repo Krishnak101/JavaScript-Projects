@@ -37,18 +37,18 @@ const Dashboard = () => {
         </Fragment>
       ) : (
         <div>
-          <div className="profile_actions">
-            <Link to="/edit-profile">
-              <i className="fas fa-user-circle  mr-1"></i>
-              Edit Profile
+          <div className="profile_actions flex flex-row">
+            <Link to="/edit-profile" className="flex flex-row items-center w-1/9">
+            <i className="fa-solid fa-pen-to-square"></i> 
+             <span className="hidden lg:block">Profile</span> 
             </Link>
-            <Link to="/add-experience">
+            <Link to="/add-experience" className="flex flex-row items-center w-1/8">
               <i className="fab fa-black-tie  mr-1"></i>
-              Add Experience
+              <span className="hidden lg:block"> Experience+</span>
             </Link>
-            <Link to="/add-education">
+            <Link to="/add-education" className="flex flex-row items-center w-1/8">
               <i className="fas fa-graduation-cap  mr-1"></i>
-              Add Education
+              <span className="hidden lg:block"> Education+</span>
             </Link>
           </div>
           <Skills skills={currentProfileStore.profile.skills} />

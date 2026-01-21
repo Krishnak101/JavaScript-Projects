@@ -1,5 +1,9 @@
 .dashboard_top {
-  margin-left: 35px;
+  margin-left: 1vw;
+}
+
+.dashboard_top > p.lead {
+  margin-left: 1.7vw;
 }
 .create_profile_link {
   display: inline-block;

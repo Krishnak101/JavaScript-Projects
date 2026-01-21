@@ -24,7 +24,7 @@ const ProfileGithub = ({ github_username }) => {
           <h2 className="text-white text-2xl font-bold">Github Repos</h2>
           {repos.map((repo, index) => (
             <div key={repo.id} className="text-white repo_text_container">
-              <div className="repo_text_card">
+              <div className="repo_text_card w-6/7">
                 <h4 className="text-blue-400 font-bold">
                   <Link
                     to={repo.html_url}

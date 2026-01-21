@@ -17,16 +17,16 @@ const Navbar = () => {
       </h1>
       <ul>
         <li className="copyrights">
-          <small className="fa fa-copyright" aria-hidden="true" />
-          <small>
+          
             <Link
               to="https://github.com/Krishnak101"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer" className="flex flex-row items-center"
             >
-              Krishna
+              <small className="fa fa-copyright" aria-hidden="true" />
+          
+              <span className="hidden md:block">Krishna</span>
             </Link>
-          </small>
         </li>
 
         {userStore?.token && (

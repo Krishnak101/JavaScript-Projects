@@ -1,6 +1,6 @@
 .post_card_container {
   color: black;
-  margin: 20px 50px;
+  margin: 1.5vw 2vw;;
   padding: 15px;
   border-radius: 8px;
   display: flex;
@@ -11,7 +11,7 @@
   height: 70px;
   width: 70px;
   padding: 2px;
-  margin-right: 26px;
+  margin-right: 2.5vw;
 }
 
 .post_text{
@@ -35,7 +35,7 @@
 
 .btn {
   margin: 3px 7px 0px 3px;
-  padding: 3px 13px;
+  padding: 5px 10px;
   border-radius: 4px;
   color: rgb(16, 15, 15);
 }

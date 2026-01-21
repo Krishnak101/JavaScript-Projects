@@ -1,10 +1,10 @@
 .profiles_top_container {
   padding: 20px 10px;
-  margin: 10px 50px;
+  margin: 1vw 2vw;
 }
 
 .profile_item_container {
-  margin: 20px;
+  margin: 0.8vw 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,8 +43,7 @@
 
 .profile_link_red {
   background-color: rgb(201, 8, 8);
-  margin: 20px;
-  margin-left: 50px;
+  margin: 2vw;
 }
 .profile_link_red:hover {
   opacity: 0.8;
@@ -54,7 +53,7 @@
 
 .profile_top {
   padding: 10px 30px;
-  margin: 13px 50px;
+  margin: 1.3vw 2vw;
   display: flex;
   flex-direction: column;
   align-items: center;
