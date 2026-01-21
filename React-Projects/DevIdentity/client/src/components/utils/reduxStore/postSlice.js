@@ -30,6 +30,11 @@ const postSlice = createSlice({
       if(index !==-1){
         state.posts[index].likes = action.payload.likes;
       }
+
+      // 2. Update the single post (for the Post Detail/Discussion page)
+      if (state.post && state.post._id === action.payload.postId) {
+        state.post.likes = action.payload.likes;
+      }
       state.loading = false;
     },
     deletePost: (state, action) => {

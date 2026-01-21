@@ -1,0 +1,14 @@
+.comment_container{
+    display: flex;
+    margin: 7px;
+    padding: 3px;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.round_image_comment {
+  height: 50px;
+  width: 50px;
+  padding: 3px;
+  margin-right: 1.5vw;
+}

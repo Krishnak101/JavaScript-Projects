@@ -33,7 +33,7 @@ const PostCard = ({
 
         <button onClick={() => addLikeOrRemove("like",_id)} type="button" className="like_btn hover:shadow-[0_0_5px_rgba(145,145,178,0.6)]">
           <i className="fas fa-thumbs-up" />{" "}
-          <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+          <span>{likes?.length > 0 && <span>{likes.length}</span>}</span>
         </button>
         <button
           onClick={() => addLikeOrRemove("unlike",_id)}

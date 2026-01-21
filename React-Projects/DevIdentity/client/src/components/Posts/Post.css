@@ -1,5 +1,9 @@
-.btn_back_posts{
+.btn_back_posts, .text_comments_header{
     margin-left: 2vw;
-    padding: 10px;
+    padding: 8px;
 
+}
+
+.comments_container{
+    margin-left: 2vw;
 }

@@ -23,7 +23,7 @@ export const getAllPosts = () => async (dispatch) => {
 export const likeOrUnlikePost = (type, postId) => async (dispatch) => {
   try {
     const response = await axios.put(`/api/posts/${type}/${postId}`);
-  dispatch(updateLikes({postId, likes: response.data}));
+  dispatch(updateLikes({postId:postId, likes: response.data}));
   } catch (error) {
     console.error("Error:: likeOrUnlikePost() : ",error.response);
     dispatch(
