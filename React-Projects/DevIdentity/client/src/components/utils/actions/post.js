@@ -60,3 +60,15 @@ export const add_Post = (formData) => async (dispatch) => {
       dispatch(setAlertWithTimeOut(error.response?.data?.msg, "danger"));
     }
   };
+
+  export const getPostByID = ( postId) => async (dispatch) => {
+  try {
+    const response = await axios.get(`/api/posts/${postId}`);
+  dispatch(setPost(response.data));
+  } catch (error) {
+    console.error("Error:: getPostByID() : ",error.response);
+    dispatch(
+      setAlertWithTimeOut(error.response.data?.msg, "danger"),
+    );
+  }
+};

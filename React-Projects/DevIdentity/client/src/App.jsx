@@ -17,6 +17,7 @@ import AddEducation from "./components/Profile/AddEducation.jsx";
 import ExperienceTimeline from "./components/Profile/ExperienceTimeLine.jsx";
 import Profiles from "./components/Profiles/Profiles.jsx";
 import Profile from "./components/Profiles/Profile.jsx";
+import Post from "./components/Posts/Post.jsx";
 
 const App = () => {
   const alert = useSelector((state) => state.alert);
@@ -49,6 +50,7 @@ const App = () => {
             <Route path="/show-timeline" element={<ExperienceTimeline />} />
 
             <Route path="/posts" element={<Posts />} />
+            <Route path="/posts/:id" element={<Post />} />
           </Route>
         </Routes>
       </Fragment>

@@ -21,33 +21,36 @@ const PostCard = ({
             src={avatar}
             alt=""
           />
-          <h4>{name.split(" ")[0]}</h4>
+          
         </Link>
       </div>
-      <div>
+      <div className="w-full">
+        <div className="flex flex-row">
+          <h4 className="font-bold">{name} </h4> 
+          <p className="post_date">{date.substring(0, 10)}</p>
+        </div>
         <p className="post_text">{text}</p>
-        <p>
-          <i className="post_date">Posted on {date.substring(0, 10)}</i>
-        </p>
 
-        <button onClick={() => addLikeOrRemove("like",_id)} type="button" className="like_btn hover:shadow-[0_0_10px_rgba(145,145,178,0.6)]">
+        <button onClick={() => addLikeOrRemove("like",_id)} type="button" className="like_btn hover:shadow-[0_0_5px_rgba(145,145,178,0.6)]">
           <i className="fas fa-thumbs-up" />{" "}
           <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
         </button>
         <button
           onClick={() => addLikeOrRemove("unlike",_id)}
           type="button"
-          className="like_btn hover:shadow-[0_0_10px_rgba(145,145,178,0.6)]"
+          className="like_btn hover:shadow-[0_0_5px_rgba(145,145,178,0.6)]"
         >
           <i className="fas fa-thumbs-down" />
         </button>
+        { auth && (
         <Link to={`/posts/${_id}`} className="btn btn_primary bg-cyan-500 hover:shadow-[0_0_10px_rgba(8,145,178,0.7)]">
           Comments:{" "}
           {comments.length > 0 && (
             <span className="comment-count">{comments.length}</span>
           )}
         </Link>
-        {auth.token && user_id === auth.user?._id && (
+        )}
+        {auth?.token && user_id === auth?.user?._id && (
           <button
             onClick={() => dispatch(delete_Post(_id))}
             type="button"
