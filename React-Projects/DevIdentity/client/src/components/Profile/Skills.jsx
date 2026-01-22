@@ -9,6 +9,7 @@ const Skills = ({ skills }) => {
     { name: "HTML", icon: "fa-brands fa-html5", color: "#E34F26" },
     { name: "CSS", icon: "fa-brands fa-css3-alt", color: "#1572B6" },
     { name: "JavaScript", icon: "fa-brands fa-js", color: "#F7DF1E" },
+    { name: "TypeScript", icon: "fa-solid fa-code", color: "#3178C6" },
     { name: "React", icon: "fa-brands fa-react", color: "#61DAFB" },
     {
       name: "Reduxjs Toolkit",
@@ -49,6 +50,27 @@ const Skills = ({ skills }) => {
     { name: "Bash", icon: "fa-solid fa-terminal", color: "#4EAA25" },
     { name: "DSA", icon: "fa-solid fa-code-branch", color: "#000000" },
     { name: "Git", icon: "fa-brands fa-github", color: "#000000" },
+
+    // Additional Skills
+    { name: "Ansible", icon: "fa-solid fa-gears", color: "#EE0000" },
+    { name: "Dynamo DB", icon: "fa-solid fa-bolt", color: "#4053D6" },
+    { name: "MVC", icon: "fa-solid fa-diagram-project", color: "#F26522" },
+    { name: "Hadoop", icon: "fa-solid fa-elephant", color: "#FFFF00" }, // Note: fa-elephant requires FA 6+
+    { name: "Next.js", icon: "fa-solid fa-n", color: "#000000" },
+    { name: "Flask", icon: "fa-solid fa-flask", color: "#000000" },
+    { name: "Power BI", icon: "fa-solid fa-chart-bar", color: "#F2C811" },
+    { name: "Google ADK", icon: "fa-brands fa-android", color: "#3DDC84" },
+    { name: "Artificial Intelligence", icon: "fa-solid fa-brain", color: "#00A2FF" },
+    { name: "Excel", icon: "fa-solid fa-file-excel", color: "#1D6F42" },
+
+    // Essential Industry Tools
+    { name: "Jenkins", icon: "fa-brands fa-jenkins", color: "#D24939" },
+    { name: "Firebase", icon: "fa-solid fa-fire", color: "#FFCA28" },
+    { name: "GraphQL", icon: "fa-solid fa-circle-nodes", color: "#E10098" },
+    { name: "Jira", icon: "fa-brands fa-jira", color: "#0052CC" },
+    { name: "Figma", icon: "fa-brands fa-figma", color: "#F24E1E" },
+    { name: "Redis", icon: "fa-solid fa-box-archive", color: "#DC382D" },
+    { name: "Azure", icon: "fa-brands fa-microsoft", color: "#0078D4" }
   ];
 
   if (!isProfileLoaded) {
