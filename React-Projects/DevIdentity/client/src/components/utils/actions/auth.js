@@ -42,9 +42,8 @@ export const handleUserAuth =
       dispatch(fetchUserData());
     } catch (error) {
       const errors = error.response?.data?.errors;
-      const errors_msg = errors.map((err) => err.msg).join(" | ");
-      console.error("Error:: handleUserAuth() : ", errors_msg);
-      dispatch(setAlertWithTimeOut(errors_msg, "danger"));
+      console.error("Error:: handleUserAuth() : ", error);
+      dispatch(setAlertWithTimeOut(errors[0]?.msg, "danger"));
     }
   };
 

@@ -15,11 +15,7 @@ const ProfileGithub = ({ github_username }) => {
   }, []);
   return (
     <div className="skills_top_container bg-gray-700/40  border-2 border-gray-500/40 rounded-lg">
-      {repos.length === 0 ? (
-        <Fragment>
-          <p className="text-center text-gray-500">Git Hub Repos Not found.</p>
-        </Fragment>
-      ) : (
+      {Array.isArray(repos) && repos.length > 0 ? (
         <div>
           <h2 className="text-white text-2xl font-bold">Github Repos</h2>
           {repos.map((repo, index) => (
@@ -52,6 +48,11 @@ const ProfileGithub = ({ github_username }) => {
             </div>
           ))}
         </div>
+        
+      ) : (
+        <Fragment>
+          <p className="text-center text-gray-500">Git Hub Repos Not found.</p>
+        </Fragment>
       )}
     </div>
   );

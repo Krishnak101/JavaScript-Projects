@@ -45,7 +45,7 @@ export const getProfileById = (userId) => async (dispatch) => {
     dispatch(setProfile(response.data));
   } catch (error) {
     console.error("Error :: getProfileById() : ", error);
-    const err_msg = error.response.data.msg;
+    const err_msg = error.response?.data?.msg;
     if (err_msg === "Profile not found") {
       dispatch(setIsProfileLoaded(true));
     }
@@ -71,9 +71,8 @@ export const setCurrentUserProfile =
       navigate("/dashboard");
     } catch (error) {
       const errors = error.response?.data?.errors;
-      const errors_msg = errors.map((err) => err.msg).join(" | ");
-      console.error("Error :: setCurrentUserProfile() : ", errors_msg);
-      dispatch(setAlertWithTimeOut(errors_msg, "danger"));
+      console.error("Error :: setCurrentUserProfile() : ", error);
+      dispatch(setAlertWithTimeOut(errors[0]?.msg, "danger"));
     }
   };
 
@@ -88,9 +87,8 @@ export const setCurrentUserExperience =
       navigate("/dashboard");
     } catch (error) {
       const errors = error.response?.data?.errors;
-      const errors_msg = errors.map((err) => err.msg).join(" | ");
-      console.error("Error :: setCurrentUserExperience() : ", errors_msg);
-      dispatch(setAlertWithTimeOut(errors_msg, "danger"));
+      console.error("Error :: setCurrentUserExperience() : ", error);
+      dispatch(setAlertWithTimeOut(errors[0]?.msg, "danger"));
     }
   };
 
@@ -105,9 +103,8 @@ export const setCurrentUserEducation =
       navigate("/dashboard");
     } catch (error) {
       const errors = error.response?.data?.errors;
-      const errors_msg = errors.map((err) => err.msg).join(" | ");
-      console.error("Error :: setCurrentUserEducation() : ", errors_msg);
-      dispatch(setAlertWithTimeOut(errors_msg, "danger"));
+      console.error("Error :: setCurrentUserEducation() : ", error);
+      dispatch(setAlertWithTimeOut(errors[0]?.msg, "danger"));
     }
   };
 

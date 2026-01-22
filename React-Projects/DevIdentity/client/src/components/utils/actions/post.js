@@ -27,7 +27,7 @@ export const likeOrUnlikePost = (type, postId) => async (dispatch) => {
   } catch (error) {
     console.error("Error:: likeOrUnlikePost() : ",error.response);
     dispatch(
-      setAlertWithTimeOut(error.response.data.msg, "danger"),
+      setAlertWithTimeOut(error.response?.data?.msg, "danger"),
     );
   }
 };
@@ -40,9 +40,9 @@ export const delete_Post = ( postId) => async (dispatch) => {
       setAlertWithTimeOut("Post Removed", "success"),
     );
   } catch (error) {
-    console.error("Error:: likeOrUnlikePost() : ",error.response);
+    console.error("Error:: delete_Post() : ",error.response);
     dispatch(
-      setAlertWithTimeOut(error.response.data?.msg, "danger"),
+      setAlertWithTimeOut(error.response?.data?.msg, "danger"),
     );
   }
 };
@@ -101,7 +101,7 @@ export const delete_Comment = ( postId, commentId) => async (dispatch) => {
   } catch (error) {
     console.error("Error:: delete_Comment() : ",error.response);
     dispatch(
-      setAlertWithTimeOut(error.response.data.msg, "danger"),
+      setAlertWithTimeOut(error.response?.data?.msg, "danger"),
     );
   }
 };

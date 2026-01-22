@@ -299,6 +299,10 @@ router.get("/github/:username", async (req, res) => {
       Authorization: `token ${config.get("gh_token")}`,
     };
     const githubResponse = await axios.get(uri, { headers });
+    const contentType = githubResponse.headers['content-type'];
+      if (contentType && contentType.indexOf('application/json') === -1) {
+        return  res.status(404).json({ msg: 'Repos not found or invalid user'});
+      }
     return res.json(githubResponse.data);
   } catch (err) {
     console.error(err);
