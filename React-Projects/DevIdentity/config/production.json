@@ -1,7 +1,7 @@
 {
-  "mongoURI": "MONGO_URI",
-  "jwtSecret": "JWT_SECRET",
-  "githubClientId": "GITHUB_CLIENT_ID",
-  "githubClientSecret": "GITHUB_CLIENT_SECRET",
-  "gh_token": "GITHUB_TOKEN"
+  "MONGO_URI": "mongoURI",
+  "JWT_SECRET": "jwtSecret",
+  "GITHUB_CLIENT_ID": "githubClientId",
+  "GITHUB_CLIENT_SECRET": "githubClientSecret",
+  "GITHUB_TOKEN": "gh_token"
 }
