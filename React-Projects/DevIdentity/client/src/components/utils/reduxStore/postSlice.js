@@ -45,10 +45,20 @@ const postSlice = createSlice({
       state.posts.unshift(action.payload);
       state.loading = false;
     },
+    addComment: (state, action) =>{
+      if(state.post){
+        state.post.comments  = action.payload;
+      }
+    },
+    deleteComment: (state, action) =>{
+      if(state.post){
+        state.post.comments  = action.payload;
+      }
+    },
   },
 });
 
-export const { getPosts, setPost, setPostError, clearPostError, updateLikes, deletePost, addPost } =
+export const { getPosts, setPost, setPostError, clearPostError, updateLikes, deletePost, addPost, addComment, deleteComment } =
   postSlice.actions;
 
 export default postSlice.reducer;

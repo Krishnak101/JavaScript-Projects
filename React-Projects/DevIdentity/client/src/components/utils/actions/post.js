@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getPosts, setPost, setPostError, updateLikes, deletePost, addPost } from "../reduxStore/postSlice";
+import { getPosts, setPost, setPostError, updateLikes, deletePost, addPost, addComment, deleteComment } from "../reduxStore/postSlice";
 import { setAlertWithTimeOut } from "./alerts";
 
 const config = {
@@ -69,6 +69,39 @@ export const add_Post = (formData) => async (dispatch) => {
     console.error("Error:: getPostByID() : ",error.response);
     dispatch(
       setAlertWithTimeOut(error.response.data?.msg, "danger"),
+    );
+  }
+};
+
+export const add_Comment = ( postId, text) => async (dispatch) => {
+  try {
+    const body = JSON.stringify({"text":text});
+
+    const response = await axios.post(`/api/posts/comment/${postId}`, body, config);
+  dispatch(addComment(response.data));
+  dispatch(
+      setAlertWithTimeOut("Comment Added", "success"),
+    );
+  } catch (error) {
+    console.error("Error:: add_Comment() : ",error.response);
+    dispatch(
+      setAlertWithTimeOut(error.response.data.msg, "danger"),
+    );
+  }
+};
+
+export const delete_Comment = ( postId, commentId) => async (dispatch) => {
+  try {
+
+    const response = await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
+  dispatch(deleteComment(response.data));
+  dispatch(
+      setAlertWithTimeOut("Comment Removed", "success"),
+    );
+  } catch (error) {
+    console.error("Error:: delete_Comment() : ",error.response);
+    dispatch(
+      setAlertWithTimeOut(error.response.data.msg, "danger"),
     );
   }
 };

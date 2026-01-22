@@ -199,14 +199,16 @@ router.delete("/comment/:post_id/:comment_id", auth, async (req, res) => {
     }
     // only logged in user can delete their comment or post owner can delete any comment on their post
     if (
-      post.comments[removeIndex].user_id.toString() !== req.user_id ||
-      post.user_id.toString() !== req.user_id
+      post.comments[removeIndex].user_id.toString() === req.user_id ||
+      post.user_id.toString() === req.user_id
     ) {
+      post.comments.splice(removeIndex, 1);
+      await post.save();
+      res.json(post.comments);
+    }
+    else{
       return res.status(401).json({ msg: "User not authorized" });
     }
-    post.comments.splice(removeIndex, 1);
-    await post.save();
-    res.json(post.comments);
   } catch (err) {
     console.error(err.message);
     if (err.kind === "ObjectId") {

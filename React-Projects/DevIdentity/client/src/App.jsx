@@ -50,7 +50,7 @@ const App = () => {
             <Route path="/show-timeline" element={<ExperienceTimeline />} />
 
             <Route path="/posts" element={<Posts />} />
-            <Route path="/posts/:id" element={<Post />} />
+            <Route path="/posts/:postId" element={<Post />} />
           </Route>
         </Routes>
       </Fragment>

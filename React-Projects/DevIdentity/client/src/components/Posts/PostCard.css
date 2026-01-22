@@ -1,6 +1,6 @@
 .post_card_container {
   color: black;
-  margin: 1.5vw 2vw;;
+  margin: 1.5vw 2vw;
   padding: 15px;
   border-radius: 8px;
   display: flex;
@@ -22,6 +22,7 @@
   font-size: smaller;
   color: gray;
   margin-top: 3px;
+  margin-right: 10px;
   padding-left: 20px
 }
 
