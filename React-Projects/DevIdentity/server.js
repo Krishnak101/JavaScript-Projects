@@ -2,6 +2,9 @@ import express from "express";
 import connectDB from "./config/db.js";
 import path from "path";
 import { fileURLToPath } from 'url';
+import mongoSanitize from "express-mongo-sanitize";
+import helmet from "helmet";
+import xss from "xss-clean";
 
 connectDB();
 const app = express();
@@ -9,6 +12,16 @@ const PORT = process.env.PORT || 5000;
 
 //initializing middleware for json body parsing capability
 app.use(express.json({ extended: false }));
+
+
+//Sanitize data
+// app.use(mongoSanitize());
+
+//Set security headers
+app.use(helmet());
+
+//Prevent XSS Attacks
+// app.use(xss());
 
 // ES Module fix for __dirname
 const __filename = fileURLToPath(import.meta.url);

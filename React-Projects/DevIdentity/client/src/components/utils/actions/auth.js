@@ -55,10 +55,12 @@ export const logoutUser = () => (dispatch) => {
 };
 
 export const fetchUserData = () => async (dispatch) => {
+  // console.log("fetchUserData() :: localStorage Token : ", localStorage.getItem("token"));
   if (localStorage.getItem("token")) {
     try {
       const response = await axios.get("/api/auth");
       dispatch(setUserData(response.data));
+      // console.log("fetchUserData() :: Response Data : ", response.data);
     } catch (error) {
       console.error("Error:: fetchUserData() : ", error);
       if (error?.response?.data?.error === "jwt expired") {

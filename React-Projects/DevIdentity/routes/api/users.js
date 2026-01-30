@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import config from "config";
 import User from "../../models/User.js";
+import auth from "../../middleware/auth.js";
 import { check, validationResult } from "express-validator";
 const router = express.Router();
 
@@ -66,6 +67,32 @@ router.post(
       res.status(500).send("Server Error");
     }
   }
+);
+
+// @route    POST api/users/imageUpload
+// @desc     Upload User's Image
+// @access   Private
+router.post(
+  "/imageUpload",
+  [
+    auth,
+    [
+      check("profile_image_url", "URL is required").not().isEmpty(),
+    ],
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    const {
+      profile_image_url,
+    } = req.body;
+        //update the existing user's avatar
+
+         await User.findByIdAndUpdate(req.user_id, {avatar: profile_image_url}, { new: true });
+        return res.json({ msg: "User Avatar Updated" });
+  },
 );
 
 export default router;

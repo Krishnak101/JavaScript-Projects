@@ -1,4 +1,4 @@
-import React, { use, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../Login/Login.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +6,7 @@ import {
   getCurrentUserProfile,
   setCurrentUserProfile,
 } from "../utils/actions/profile";
+import { fetchUserData } from "../utils/actions/auth";
 
 const CreateProfile = ({ isEditPage }) => {
   const currentProfileStore = useSelector((state) => state.profile);
@@ -27,9 +28,14 @@ const CreateProfile = ({ isEditPage }) => {
   const twitterRef = useRef(null);
   const linkedinRef = useRef(null);
   const youtubeRef = useRef(null);
+  const profileImageRef = useRef(null);
+console.log(profileImageRef?.current?.files[0]);
 
-  const onFormSubmit = (e) => {
+
+const onFormSubmit = (e) => {
     e.preventDefault();
+    const file = profileImageRef?.current?.files[0];
+    
     const profileFormData = {
       role: roleRef.current.value,
       company: companyRef.current.value,
@@ -44,15 +50,20 @@ const CreateProfile = ({ isEditPage }) => {
       twitter: twitterRef.current ? twitterRef.current.value : "",
       linkedin: linkedinRef.current ? linkedinRef.current.value : "",
       youtube: youtubeRef.current ? youtubeRef.current.value : "",
+      profile_image: (file && file?.type.startsWith("image")) ? file : ""
+     
     };
 
     dispatch(setCurrentUserProfile(profileFormData, navigate, isEditPage));
+  
+
   };
 
   const clearForm = () => {
     return navigate("/dashboard");
   };
   useEffect(() => {
+    // dispatch(fetchUserData());
     if (!currentProfileStore.isProfileLoaded) {
       dispatch(getCurrentUserProfile());
     } else {
@@ -99,6 +110,7 @@ const CreateProfile = ({ isEditPage }) => {
 
       <form className="register_form " onSubmit={(e) => onFormSubmit(e)}>
         <small>* = required field</small>
+        <input ref={profileImageRef} type="file" className="df"/>
         <select
           ref={roleRef}
           name="role"

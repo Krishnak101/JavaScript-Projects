@@ -89,6 +89,7 @@ router.post(
           { $set: profileFields },
           { new: true },
         );
+        
         return res.json({ msg: "Profile Updated", Profile: profile });
       } else {
         //create a new profile
@@ -96,6 +97,7 @@ router.post(
         await profile.save();
         return res.json({ msg: "Profile Created", Profile: profile });
       }
+      
     } catch (err) {
       console.error(err);
       res.status(500).send("Server Error");

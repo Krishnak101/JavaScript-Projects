@@ -25,9 +25,11 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchUserData());
   }, [dispatch]);
-  // @ToDo Pagination for View Profiles Section
   // @ToDo Upload Profile Pic Feature
+  // @ToDo Make Posts section Public and Ask to join the conversation
+  // @ToDo Infinite scrolling feature for Posts
   // @ToDo Projects Section To Display our Projects
+  
   return (
     <BrowserRouter>
       <Fragment>
