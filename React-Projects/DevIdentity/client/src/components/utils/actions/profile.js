@@ -58,7 +58,6 @@ export const setCurrentUserProfile =
   async (dispatch) => {
     try {
       const body = JSON.stringify(formData);
-      console.log("setCurrentUserProfile :", formData.profile_image);
       const response = await axios.post("/api/profile", body, config);
       dispatch(setProfile(response.data.Profile));
       dispatch(handleImageUpload(formData.profile_image));
@@ -78,28 +77,29 @@ export const setCurrentUserProfile =
     }
   };
 
-export const handleImageUpload =
-  (file) =>
-  async (dispatch) => {
-
-    try {
-      const imageFormData = new FormData();
-      imageFormData.append("file", file);
-      imageFormData.append("upload_preset", "dev-identity");
-      imageFormData.append("cloud_name", "dashlogyc")
-      const imageUploadResponse = await fetch("https://api.cloudinary.com/v1_1/dashlogyc/image/upload", {method: "POST", body : imageFormData});
-      const jsonResponse = await imageUploadResponse.json();
-const imageURL = jsonResponse.url;
-
-console.log("setCurrentUserProfile() image url: ", imageURL);
-// const body = JSON.stringify(formData);
-      const response = await axios.post("/api/users/imageUpload", {profile_image_url: imageURL}, config);
-      dispatch(setIsProfileLoaded(true));
-
-    } catch (err) {
-      console.error(err);
-    }
-  };
+export const handleImageUpload = (file) => async (dispatch) => {
+  try {
+    const imageFormData = new FormData();
+    imageFormData.append("file", file);
+    imageFormData.append("upload_preset", "dev-identity");
+    imageFormData.append("cloud_name", "dashlogyc");
+    const imageUploadResponse = await fetch(
+      "https://api.cloudinary.com/v1_1/dashlogyc/image/upload",
+      { method: "POST", body: imageFormData },
+    );
+    const jsonResponse = await imageUploadResponse.json();
+    const imageURL = jsonResponse.url;
+    // const body = JSON.stringify(formData);
+    const response = await axios.post(
+      "/api/users/imageUpload",
+      { profile_image_url: imageURL },
+      config,
+    );
+    dispatch(setIsProfileLoaded(true));
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 export const setCurrentUserExperience =
   (formData, navigate) => async (dispatch) => {

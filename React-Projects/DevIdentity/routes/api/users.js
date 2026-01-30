@@ -18,7 +18,7 @@ router.post(
     check("email", "Please enter a valid email").isEmail(),
     check(
       "password",
-      "Please enter a password with minimum of 7 characters"
+      "Please enter a password with minimum of 7 characters",
     ).isLength({ min: 7 }),
   ],
   async (req, res) => {
@@ -60,13 +60,13 @@ router.post(
         (err, token) => {
           if (err) throw err;
           res.json({ token });
-        }
+        },
       );
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");
     }
-  }
+  },
 );
 
 // @route    POST api/users/imageUpload
@@ -74,24 +74,21 @@ router.post(
 // @access   Private
 router.post(
   "/imageUpload",
-  [
-    auth,
-    [
-      check("profile_image_url", "URL is required").not().isEmpty(),
-    ],
-  ],
+  [auth, [check("profile_image_url", "URL is required").not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const {
-      profile_image_url,
-    } = req.body;
-        //update the existing user's avatar
+    const { profile_image_url } = req.body;
+    //update the existing user's avatar
 
-         await User.findByIdAndUpdate(req.user_id, {avatar: profile_image_url}, { new: true });
-        return res.json({ msg: "User Avatar Updated" });
+    await User.findByIdAndUpdate(
+      req.user_id,
+      { avatar: profile_image_url },
+      { new: true },
+    );
+    return res.json({ msg: "User Avatar Updated" });
   },
 );
 
