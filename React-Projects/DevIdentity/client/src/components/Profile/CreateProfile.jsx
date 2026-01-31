@@ -11,9 +11,13 @@ import { fetchUserData } from "../utils/actions/auth";
 const CreateProfile = ({ isEditPage }) => {
   const currentProfileStore = useSelector((state) => state.profile);
   const [showSocials, setShowSocials] = useState(false);
+  const [fileName, setFileName] = useState(null);
 
   const toggleSocials = () => {
     setShowSocials(!showSocials);
+  };
+  const handleFileUpload = () => {
+    setFileName(profileImageRef?.current?.files[0].name);
   };
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,13 +33,11 @@ const CreateProfile = ({ isEditPage }) => {
   const linkedinRef = useRef(null);
   const youtubeRef = useRef(null);
   const profileImageRef = useRef(null);
-console.log(profileImageRef?.current?.files[0]);
 
-
-const onFormSubmit = (e) => {
+  const onFormSubmit = (e) => {
     e.preventDefault();
     const file = profileImageRef?.current?.files[0];
-    
+
     const profileFormData = {
       role: roleRef.current.value,
       company: companyRef.current.value,
@@ -50,13 +52,10 @@ const onFormSubmit = (e) => {
       twitter: twitterRef.current ? twitterRef.current.value : "",
       linkedin: linkedinRef.current ? linkedinRef.current.value : "",
       youtube: youtubeRef.current ? youtubeRef.current.value : "",
-      profile_image: (file && file?.type.startsWith("image")) ? file : ""
-     
+      profile_image: file && file?.type.startsWith("image") ? file : "",
     };
 
     dispatch(setCurrentUserProfile(profileFormData, navigate, isEditPage));
-  
-
   };
 
   const clearForm = () => {
@@ -110,7 +109,22 @@ const onFormSubmit = (e) => {
 
       <form className="register_form " onSubmit={(e) => onFormSubmit(e)}>
         <small>* = required field</small>
-        <input ref={profileImageRef} type="file" className="df"/>
+        <div className="custom_file_upload">
+          <br></br>
+          <label htmlFor="file-upload" className="text-white">
+            <i className="fas fa-camera"></i> Upload{" "}
+            {!fileName && "Profile Picture"}
+          </label>
+          <input
+            id="file-upload"
+            ref={profileImageRef}
+            type="file"
+            accept="image/png, image/jpeg"
+            onChange={handleFileUpload}
+            style={{ display: "none" }} // This hides the "No file chosen" text
+          />
+          {fileName && <small className="file_upload_name">{fileName}</small>}
+        </div>
         <select
           ref={roleRef}
           name="role"

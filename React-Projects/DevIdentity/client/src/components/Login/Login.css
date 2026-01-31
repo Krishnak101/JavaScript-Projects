@@ -77,3 +77,12 @@
   align-items: center;
   justify-content: space-between;
 }
+.custom_file_upload{
+  margin: 10px;
+}
+.file_upload_name {
+  border-radius: 3px;
+  margin: 6px;
+  padding: 8px;
+  background-color: #3c3939;
+}

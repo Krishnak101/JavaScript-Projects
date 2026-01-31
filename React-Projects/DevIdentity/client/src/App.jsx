@@ -25,11 +25,11 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchUserData());
   }, [dispatch]);
-  // @ToDo Upload Profile Pic Feature
+  // @ToDo If Profile Pic is already uploaded, replace it with a new one instead of creating newly
   // @ToDo Make Posts section Public and Ask to join the conversation
   // @ToDo Infinite scrolling feature for Posts
   // @ToDo Projects Section To Display our Projects
-  
+
   return (
     <BrowserRouter>
       <Fragment>
