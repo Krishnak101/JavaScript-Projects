@@ -26,6 +26,7 @@ const App = () => {
     dispatch(fetchUserData());
   }, [dispatch]);
   // @ToDo If Profile Pic is already uploaded, replace it with a new one instead of creating newly
+  // @ToDo Feature to format text in Posts and Comments using Editor.js
   // @ToDo Make Posts section Public and Ask to join the conversation
   // @ToDo Infinite scrolling feature for Posts
   // @ToDo Projects Section To Display our Projects

@@ -1,9 +1,9 @@
-.comment_container{
-    display: flex;
-    margin: 7px 2vw 7px 0px;
-    padding: 3px;
-    align-items: center;
-    border-radius: 10px;
+.comment_container {
+  display: flex;
+  margin: 7px 2vw 7px 0px;
+  padding: 3px;
+  align-items: top;
+  border-radius: 10px;
 }
 
 .round_image_comment {
