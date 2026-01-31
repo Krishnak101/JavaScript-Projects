@@ -21,7 +21,21 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-      "img-src": ["'self'", "data:", "https://res.cloudinary.com"],
+      // 1. Allow FontAwesome scripts
+      "script-src": [
+        "'self'",
+        "https://kit.fontawesome.com",
+        "https://ka-f.fontawesome.com",
+      ],
+      // 2. Allow Cloudinary AND Gravatar images
+      "img-src": [
+        "'self'",
+        "data:",
+        "https://res.cloudinary.com",
+        "https://www.gravatar.com",
+      ],
+      // 3. FontAwesome often needs connect-src for icons to load
+      "connect-src": ["'self'", "https://ka-f.fontawesome.com"],
     },
   }),
 );
